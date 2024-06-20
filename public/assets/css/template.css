@@ -1,0 +1,12 @@
+* {
+    margin: 0 auto;
+
+  }
+  .navbar {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+body {
+    margin-top: 60px; 
+}
