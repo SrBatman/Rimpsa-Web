@@ -7,6 +7,177 @@
     margin-left: 0;
 }
 
-body {
-    margin-top: 60px; 
+.top-container {
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: black;
+    height: 200px;
+}
+
+.top-first {
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: black;
+    height: 50px;
+
+}
+
+.top-second {
+  margin-top: 0;
+  margin-bottom: 0;
+  background-color: black;
+  height: 150px;
+
+}
+
+.social-container {
+  display: flex;
+  justify-content: space-between;
+  width: 5%;
+
+}
+
+
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+.cotizacion-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  position: relative;
+  left: 40px;
+}
+
+.llamada-text{
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.llamada-text span{
+  font-weight: 900;
+}
+
+.bordered-div {
+  border: 2px solid #FFFFFF;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.top-second-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding-top: 40px;
+}
+
+.icon-rimpsa-top {
+  position: relative;
+  left: 50px;
+}
+
+.contenedor-img-contacto {
+  position: relative;
+  right: 150px;
+}
+
+.main-option {
+  background-color: #fcb900;
+}
+
+.main-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: black !important;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.navbar-nav .nav-item {
+  height: 50px; /* Ajusta la altura según tus necesidades */
+  width: auto; /* Opcional: ajusta el ancho automáticamente al contenido */
+}
+
+/**
+  * Añade un pseudo-elemento ::before a cada elemento .nav-item
+  * para crear un fondo deslizante
+  */
+.navbar-nav .nav-item {
+  height: 50px; /* Ajusta la altura según tus necesidades */
+  display: flex; /* Usa flexbox para alinear verticalmente el contenido */
+  align-items: center; /* Centra verticalmente el contenido */
+  padding: 0 15px; /* Ajusta el relleno interno según tus necesidades */
+  position: relative; /* Establece posición relativa */
+  overflow: hidden; /* Oculta cualquier contenido que sobresalga */
+  transition: background-color 0.3s ease; /* Transición para el color de fondo */
+}
+
+.navbar-nav .nav-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 100%; /* Posición inicial fuera de la vista */
+  width: 100%;
+  height: 100%;
+  background-color: #fcb900;
+  transition: bottom 0.3s ease; /* Transición para el deslizamiento */
+}
+
+.navbar-nav .nav-item:hover::before {
+  bottom: 0; /* Desliza hacia abajo al hacer hover */
+}
+
+.navbar-nav .nav-item a {
+  z-index: 1; /* Asegura que el texto esté por encima del fondo deslizante */
+  position: relative; /* Restaura la posición relativa para el enlace */
+  text-decoration: none; /* Quita la subrayado del enlace */
+  transition: color 0.3s ease; /* Transición para el color del texto */
+}
+
+.navbar-nav .nav-item:hover a {
+  color: black !important; /* Cambia el color del texto a negro al hacer hover */
+}
+
+.footer-container {
+  height: 692px;
+}
+
+.quotation-container {
+  height: 304px;
+  background-color: red;
+}
+
+.footer-info {
+  height: 344px;
+  background-color: #fcb900;
+}
+
+.footer-copy {
+  height: 44px;
+  text-align: center;
+  background-color: black;
+}
+
+.footer-copy span {
+  color: white;
 }

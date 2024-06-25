@@ -2,8 +2,12 @@
     <div>
         {{ $logo }}
     </div>
-
+     <h1 class="">¡Bienvenido!</h1>
+     @if(Route::currentRouteName() == 'login') 
+     <span> Inicia sesión en Rimpsa o <a href="{{route('register')}}" class="text-blue-500 underline">crea una cuenta</a> </span>
+     @endif
     <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+    
         {{ $slot }}
     </div>
 
