@@ -12,6 +12,10 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
+Route::get('/nosotros', function () {
+    return view('aboutus');
+})->name('nosotros');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

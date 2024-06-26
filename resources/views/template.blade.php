@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rimpsa</title>
+	<title>Rimpsa - Refacciones para maquinaria pesada</title>
 	<link rel="stylesheet" href="{{ asset('assets/css/template.css') }}">
 
 	<!-- Bootstrap -->
@@ -58,7 +58,7 @@
 					<div class="collapse navbar-collapse" id="navbarsExample07XL">
 						<div class="cotizaciones-contenedor">
 
-							<h2 class="cotizacion-text">¿COTIZACIONES ?</h2>
+							<h2 class="cotizacion-text">¿COTIZACIONES?</h2>
 						</div>
 						<div class="cotizaciones-llamadas">
 							<h2 class="llamada-text">Llama al: <span>55-89-68-58-41</span></h2>
@@ -68,8 +68,8 @@
 							<!-- separacion -->
 						</div>
 						<div class="text-end">
-							<button type="button" class="btn btn-outline-light me-2">Inicio sesión</button>
-							<button type="button" class="btn btn-warning">Registrarse</button>
+							<button type="button" class="btn btn-secondary me-2" onclick="window.location=`{{ route('login') }}`">Inicio sesión</button>
+							<button type="button" class="btn btn-warning" onclick="window.location=`{{ route('register') }}`">Registrarse</button>
 						</div>
 						<div>
 							<form class="d-flex">
@@ -86,6 +86,10 @@
 				</div>
 			</nav>
 		</section>
+		<div class="line-container">
+			<div class="line-divider"></div>
+		</div>
+
 		<section class="top-second">
 			<div class="top-second-container">
 				<div class="icon-rimpsa-top">
@@ -104,7 +108,7 @@
 										<a class="nav-link active main-text" aria-current="page" href="#">Inicio</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link active" aria-current="page" href="#">Nosotros</a>
+										<a class="nav-link active" aria-current="page" href="{{ route('nosotros')}}">Nosotros</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link active" aria-current="page" href="#">Tienda</a>
@@ -140,14 +144,88 @@
 	@yield('content')
 	<div class="footer-container">
 		<section class="quotation-container">
+			<div class="quotation-container-elements">
+				<div class="texts-container">
+					<div class="big-text">
+						<h2>REFACCIONES PARA MAQUINARIA AGRÍCOLA, INDUSTRIAL, MINERA Y MUCHO MÁS...</h2>
+					</div>
+					<div class="small-text">
+						En RIMPSA trabajamos para satisfacer los requerimientos de nuestros clientes
+					</div>
+
+				</div>
+				<div class="btn-container">
+					<button class="quotation-btn" type="button" onclick="window.location=`{{ route('contact') }}`"> Cotizaciones </button>
+				</div>
+
+			</div>
 
 		</section>
 		<section class="footer-info">
+			<div class="left-side-container">
+				<div class="left-box-inside">
+					<div class="left-uno">
+						<span class="suscription-text">Suscríbete y recibe las</span>
+
+					</div>
+					<div class="leftdos">
+						<h2 class="promotion-text">
+							PROMOCIONES <br>
+							MÁS RECIENTES
+						</h2>
+					</div>
+					<div class="left-tres">
+						<form action="">
+							<input type="email" placeholder="Email" class="input-notify" name="notifyme" />
+							<button class="btn-notifyme">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FFFFFF" class="bi bi-arrow-right" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+								</svg>
+							</button>
+
+						</form>
+
+
+
+					</div>
+					<div class="left-cuatro">
+						<p class="conditions">*Al ingresar mi correo declaro que he conocido la política de tratamiento de datos y he aceptado la misma. </p>
+					</div>
+					<div class="left-cinco">
+						<h2 class="learn-more-text">Conoce más sobre las industrias</h2>
+					</div>
+					<div class="left-seis">
+						<a href="{{ route('nosotros')}}">
+							<span>
+								Nosotros
+							</span>
+							<span>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+								</svg>
+							</span>
+
+						</a>
+
+					</div>
+					<div class="left-siete">
+
+					</div>
+					<div class="left-ocho">
+
+					</div>
+
+				</div>
+
+			</div>
+			<div class="right-side-container">
+
+			</div>
 
 		</section>
 		<section class="footer-copy">
 			<span> &copy; Todos los derechos reservados RIMPSA 2024 </span>
-			
+
 		</section>
 	</div>
 
