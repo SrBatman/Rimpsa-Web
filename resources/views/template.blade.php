@@ -15,10 +15,22 @@
 	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
 </head>
 
 <body>
+	<div class="whatsapp-contenedor">
+		<div class="asking-wsp">
+			<span>¿Necesitas ayuda? <strong>habla con nosotros</strong></span>
+		</div>
+		<div class="circle-green">
+			<i class="bi bi-whatsapp"></i>
+		</div>
+
+	</div>
+
 	<div class="top-container">
 		<section class="top-first">
 			<nav class="navbar navbar-expand-lg navbar-dark" aria-label="Ninth navbar example">
@@ -104,6 +116,7 @@
 
 							<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
 								<ul class="navbar-nav">
+
 									<li class="nav-item main-option">
 										<a class="nav-link active main-text" aria-current="page" href="#">Inicio</a>
 									</li>
@@ -209,9 +222,27 @@
 
 					</div>
 					<div class="left-siete">
+						<h2>Redes sociales</h2>
 
 					</div>
 					<div class="left-ocho">
+						<!-- <div class="fb-icon-svg">
+						
+						</div> -->
+						<a class="" href="https://www.facebook.com/rimpsa1" target="_blank">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000000" class="bi bi-facebook" viewBox="0 0 16 16">
+								<path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" />
+							</svg>
+						</a>
+						<a class="" href="https://www.youtube.com/shorts/7lLrPsDXWkc" target="_blank">
+
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000000" class="bi bi-youtube" viewBox="0 0 16 16">
+								<path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z" />
+							</svg>
+						</a>
+						<!-- <div class="yt-icon-svg">
+						
+						</div> -->
 
 					</div>
 
@@ -219,6 +250,89 @@
 
 			</div>
 			<div class="right-side-container">
+				<div class="right-box-inside">
+					<div class="right-uno">
+						<div class="img-logo-footer">
+							<img src="{{ asset('assets/imgs/logo_ultimo.png') }}" alt="logotipo-footer" height="47px" width="218px" />
+
+						</div>
+						<br>
+						<div class="footer-description">
+							<p>
+								Somos una distribuidora nacional de piezas nuevas y usadas de calidad para la línea completa de equipos CATERPILLAR, KOMATSU, CASE, CLARK-MICHIGAN, CUMINS ETC.
+							</p>
+
+						</div>
+
+					</div>
+					<div class="right-dos">
+						<div class="navigation-text">
+							<h2>NAVEGACIÓN</h2>
+
+						</div>
+
+						<div class="navigation-links">
+							<ul>
+
+								<li class="bi bi-check">
+									<a href="{{ route('nosotros')}}">Portada</a>
+								</li>
+								<li class="bi bi-check">
+									<a href="{{ route('nosotros')}}">Nosotros</a>
+								</li>
+								<li class="bi bi-check">
+									<a href="#">Tienda</a>
+								</li>
+								<li class="bi bi-check">
+									<a href="{{route('contact')}}">Contacto</a>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+					<div class="right-tres">
+						<div class="information-text">
+							<h2>INFORMACIÓN</h2>
+
+						</div>
+						<div class="ftext-uno">
+							<div class="just-text">
+								Valle de las Animas #68 Col. Valle de Aragón 1 secc
+							</div>
+
+						</div>
+						<div class="ftext-dos">
+							<div class="just-text">
+								Boulevar Bosque de Las Naciones #94A Col. <br>
+								Bosques de Aragon, C.p. 57170 Nezahualcóyotl, edo de Méx.
+							</div>
+
+						</div>
+						<br>
+						<div class="ftext-tres">
+
+							<div class="information-options">
+								<ul>
+									<li class="bi bi-telephone-fill">
+										<span class="contacts-text">
+											55-57-70-76-36
+										</span>
+
+
+									</li>
+									<li class="bi bi-envelope-open-fill">
+										<span class="contacts-text">
+											rimpsa@hotmail.com
+										</span>
+
+									</li>
+								</ul>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
 
 			</div>
 
