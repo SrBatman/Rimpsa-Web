@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@keyframes slide1 {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Animación de slide 2 */
+@keyframes slide2 {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Animación de slide 3 */
+@keyframes slide3 {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Animación de slide 4 */
+@keyframes slide4 {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Animación de slide 5 */
+@keyframes slide5 {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.my-header-section {
+    height: 465px;
+    background-color: black;
+    /* Fondo negro como base */
+}
+
+.image-animated {
+    position: relative;
+    width: 100%;
+    height: 465px;
+    background-image: url('../imgs/main/backgroud_header.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    /* Color del texto */
+    z-index: 0;
+    animation: slide1 1s ease-in-out;
+}
+
+.image-animated::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 465px;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Overlay oscuro con opacidad */
+    z-index: -1;
+    /* Colocar detrás del contenido de la imagen */
+}
+
+.right-side-header {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    width: 40%;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.right-side-header {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    width: 40%;
+    height: 100%;
+    justify-content: start;
+}
+
+.left-side-header {
+    width: 60%;
+    height: 100%;
+}
+
+.left-box-cute {
+    width: 590px;
+    height: 172px;
+    top: 100px;
+    position: relative;
+
+}
+
+.right-box-cute {
+    width: 590px;
+    height: 90px;
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    top: 250px;
+    right: 350px;
+    justify-content: center;
+}
+
+.certificate-container {
+    margin-right: 10px;
+    height: 90px;
+    width: 90px;
+}
+
+.texts-certificate {
+    margin-left: 10px;
+    width: 70%;
+}
+
+.provider-text {
+    font-family: "Barlow Semi Condensed";
+    text-transform: uppercase;
+    color: rgb(248, 177, 1);
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 35px;
+}
+
+.authorizated-text {
+    font-family: "Barlow Semi Condensed";
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 35px;
+}
+
+
+.spare-parts-text {
+    background-color: red;
+    /* Ejemplo de estilo adicional */
+    width: 490px;
+    position: relative;
+    right: 40px;
+}
+
+.spare-parts-text h2 {
+    font-family: "Barlow Semi Condensed";
+    color: rgb(255, 255, 255);
+    z-index: 5;
+
+}
+
+.specialist-text {
+    height: 90px;
+    width: 590px;
+
+}
+
+.specialist-text h2 {
+    position: relative;
+    font-size: 5em;
+    font-family: "Barlow Semi Condensed";
+    text-transform: uppercase;
+    color: rgb(248, 177, 1);
+
+}
+
+.ghost-text {
+    text-transform: uppercase;
+   
+    position: relative;
+    z-index: 5;
+}
+
+
+
+.quality-text h2 {
+    z-index: 13;
+    font-family: "Barlow Semi Condensed";
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    white-space: nowrap;
+    min-height: 0px;
+    min-width: 0px;
+    max-height: none;
+    max-width: none;
+    text-align: left;
+    position: relative;
+    left: 10px;
+    line-height: 36px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-size: 15px;
+
+  }
+
+  .second-section-index {
+    height: 454px;
+    background: white;
+  }
+
+  .yellow-element-container{
+    width: 100%;
+    height: 50%;
+    background-image: url("https://rimpsa.com/wp-content/uploads/2022/11/barra.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .white-element-container {
+    width: 100%;
+    height: 50%;
+  }
+
+  .yellow-text-container {
+    width: 619px;
+    height: 155px;
+    position: relative;
+    left: 190px;
+  }
+
+  .yellow-buttons-container {
+    width: 350px;
+    height: 155px;
+  }

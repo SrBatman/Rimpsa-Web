@@ -6,7 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Rimpsa - Refacciones para maquinaria pesada</title>
 	<link rel="stylesheet" href="{{ asset('assets/css/template.css') }}">
-
+	<link rel="stylesheet" href="{{ asset('assets/css/contact.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/index.css') }}">
 	<!-- Bootstrap -->
 
 	<link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/navbars/">
@@ -16,7 +17,6 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
 </head>
 
@@ -25,9 +25,12 @@
 		<div class="asking-wsp">
 			<span>¿Necesitas ayuda? <strong>habla con nosotros</strong></span>
 		</div>
-		<div class="circle-green">
-			<i class="bi bi-whatsapp"></i>
-		</div>
+		<a href="https://api.whatsapp.com/send?phone=5215563028296" target="_blank">
+			<div class="circle-green">
+				<i class="bi bi-whatsapp"></i>
+			</div>
+		</a>
+
 
 	</div>
 
@@ -80,8 +83,10 @@
 							<!-- separacion -->
 						</div>
 						<div class="text-end">
-							<button type="button" class="btn btn-secondary me-2" onclick="window.location=`{{ route('login') }}`">Inicio sesión</button>
-							<button type="button" class="btn btn-warning" onclick="window.location=`{{ route('register') }}`">Registrarse</button>
+							<!-- <button type="button" class="btn-login" onclick="window.location=`{{ route('login') }}`">Inicio sesión</button> -->
+							<a href="{{ route('login') }}" style="--clr:#fff" class="login-btn"><span>Inicio sesión</span><i></i></a>
+							<a href="{{ route('login') }}" style="--clr:#ffcc1e" class="login-btn"><span>Registrarse</span><i></i></a>
+							<!-- <button type="button" class="btn btn-warning" onclick="window.location=`{{ route('register') }}`">Registrarse</button> -->
 						</div>
 						<div>
 							<form class="d-flex">
@@ -117,17 +122,17 @@
 							<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
 								<ul class="navbar-nav">
 
-									<li class="nav-item main-option">
-										<a class="nav-link active main-text" aria-current="page" href="#">Inicio</a>
+									<li class="nav-item" id="index-option-nav">
+										<a class="nav-link active" id="index-text-nav" aria-current="page" href="{{ route('index') }}">Inicio</a>
 									</li>
-									<li class="nav-item">
-										<a class="nav-link active" aria-current="page" href="{{ route('nosotros')}}">Nosotros</a>
+									<li class="nav-item about-option-nav">
+										<a class="nav-link active" id="about-text-nav" aria-current="page" href="{{ route('nosotros')}}">Nosotros</a>
 									</li>
-									<li class="nav-item">
-										<a class="nav-link active" aria-current="page" href="#">Tienda</a>
+									<li class="nav-item" id="store-option-nav">
+										<a class="nav-link active" id="store-text-nav" aria-current="page" href="{{ route('tienda')}}">Tienda</a>
 									</li>
-									<li class="nav-item">
-										<a class="nav-link active" aria-current="page" href="{{route('contact')}}">Contacto</a>
+									<li class="nav-item" id="contact-option-nav">
+										<a class="nav-link active" id="contact-text-nav" aria-current="page" href="{{route('contacto')}}">Contacto</a>
 									</li>
 									<!-- <li class="nav-item dropdown">
 										<a class="nav-link dropdown-toggle" href="#" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
@@ -144,7 +149,7 @@
 
 				</div>
 				<div class="contenedor-img-contacto">
-					<a href="{{route('contact')}}">
+					<a href="{{route('contacto')}}">
 						<img src="{{ asset('assets/imgs/contacto.png') }}" alt="contacto" height="74px" width="125">
 					</a>
 
@@ -168,7 +173,7 @@
 
 				</div>
 				<div class="btn-container">
-					<button class="quotation-btn" type="button" onclick="window.location=`{{ route('contact') }}`"> Cotizaciones </button>
+					<button class="quotation-btn" type="button" onclick="window.location=`{{ route('contacto') }}`"> Cotizaciones </button>
 				</div>
 
 			</div>
@@ -275,16 +280,16 @@
 							<ul>
 
 								<li class="bi bi-check">
-									<a href="{{ route('nosotros')}}">Portada</a>
+									<a href="{{ route('index')}}">Portada</a>
 								</li>
 								<li class="bi bi-check">
 									<a href="{{ route('nosotros')}}">Nosotros</a>
 								</li>
 								<li class="bi bi-check">
-									<a href="#">Tienda</a>
+									<a href="{{ route('tienda')}}">Tienda</a>
 								</li>
 								<li class="bi bi-check">
-									<a href="{{route('contact')}}">Contacto</a>
+									<a href="{{route('contacto')}}">Contacto</a>
 								</li>
 							</ul>
 						</div>
@@ -348,7 +353,37 @@
 
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="{{ asset('assets/css/bootstrap.bundle.min.js') }}"></script>
+	<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+	<script>
+		const routes = {
+			'/': {
+				box: 'index-option-nav',
+				text: 'index-text-nav'
+			},
+			'/nosotros': {
+				box: 'about-option-nav',
+				text: 'about-text-nav'
+			},
+			'/tienda': {
+				box: 'store-option-nav',
+				text: 'store-text-nav'
+			},
+			'/contacto': {
+				box: 'contact-option-nav',
+				text: 'contact-text-nav'
+			}
+		}
+		document.addEventListener('DOMContentLoaded', function() {
+			
+			const currentUrl = window.location.pathname;
+			console.log(currentUrl);
+
+			if (Object.keys(routes[currentUrl]).length) {
+				document.getElementById(routes[currentUrl].box).style.backgroundColor = '#fcb900';
+				document.getElementById(routes[currentUrl].text).style.color = '#000';
+			}
+		});
+	</script>
 
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->

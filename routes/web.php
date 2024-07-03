@@ -2,19 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\RoutesController;
 
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::controller(RoutesController::class)-> group(function(){
+    Route::get('/', 'index')-> name('index');
+    Route::get('nosotros', 'about')-> name('nosotros');
+    Route::get('tienda', 'store')-> name('tienda');
+    Route::get('contacto', 'contact')-> name('contacto');
 });
-
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
-
-Route::get('/nosotros', function () {
-    return view('aboutus');
-})->name('nosotros');
 
 Route::middleware([
     'auth:sanctum',
