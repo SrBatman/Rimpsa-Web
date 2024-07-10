@@ -85,7 +85,7 @@
 						<div class="text-end">
 							<!-- <button type="button" class="btn-login" onclick="window.location=`{{ route('login') }}`">Inicio sesión</button> -->
 							<a href="{{ route('login') }}" style="--clr:#fff" class="login-btn"><span>Inicio sesión</span><i></i></a>
-							<a href="{{ route('login') }}" style="--clr:#ffcc1e" class="login-btn"><span>Registrarse</span><i></i></a>
+							<a href="{{ route('register') }}" style="--clr:#ffcc1e" class="login-btn"><span>Registrarse</span><i></i></a>
 							<!-- <button type="button" class="btn btn-warning" onclick="window.location=`{{ route('register') }}`">Registrarse</button> -->
 						</div>
 						<div>

@@ -214,6 +214,7 @@
   font-size: 1.5rem;
   font-weight: 600;
   color: black !important;
+  font-style: bold;
   text-align: center;
   margin-top: 0;
   margin-bottom: 0;
@@ -276,6 +277,10 @@
   position: relative;
   /* Restaura la posición relativa para el enlace */
   text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+
   /* Quita la subrayado del enlace */
   transition: color 0.3s ease;
   /* Transición para el color del texto */
@@ -292,7 +297,9 @@
 
 .quotation-container {
   height: 304px;
-  background-color: red;
+  background: rgb(112, 3, 3); /* Fallback color */
+  background: linear-gradient(to bottom, rgb(92, 7, 7) 0%, rgba(104, 5, 5, 0.89) 60%, rgb(0, 0, 0) 110%);
+  display: flex;
   align-items: center;
 }
 
@@ -412,7 +419,7 @@
   border-color: black;
   border: 2px solid black;
   /* border-radius: 1rem; */
-  background-color: red;
+  background-color: rgba(121, 19, 19, 0.966);
   height: 40px;
 }
 
