@@ -1,0 +1,66 @@
+
+#particles-js{
+    width: 100%;
+    background-color: #050404;
+    background-image: url('../imgs/main/pixelcut-export.jpeg');
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+    height: 1420px;
+    position: absolute;
+
+    z-index: -1;
+  }
+
+  canvas{
+    position: relative;
+    height: 1320px;
+    z-index: 1;
+  }
+  
+  .btn-twitter{
+    background-color: #000000;
+    color: white;
+    height: 45px;
+  }
+
+  
+  .btn-facebook{
+    background-color: #003a69;
+    color: white;
+    height: 45px;
+  }
+  
+
+  .social-text {
+    position: relative;
+    right: 60px;
+  }
+
+  .btn-sign-in {
+    background-color: rgb(180, 168, 0);
+    color: black !important;
+    border: black solid 1px !important;
+  }
+
+  .inputs-login {
+    background-color: #ffffff;
+    color: black;
+  }
+
+  .remind-box {
+    background-color: #ffffff;
+    color: rgb(87, 0, 0);
+  }
+
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }

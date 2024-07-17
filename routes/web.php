@@ -31,3 +31,6 @@ Route::get('/auth/twitter/callback', [LoginController::class, 'handleTwitterCall
 // Facebook Login
 Route::get('/auth/facebook', [LoginController::class, 'redirectToFacebook'])->name('auth.facebook');
 Route::get('/auth/facebook/callback', [LoginController::class, 'handleFacebookCallback']);
+
+//Agregar al carrito
+Route::post('/cart', [CartController::class, 'store']);

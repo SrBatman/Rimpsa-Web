@@ -4,19 +4,20 @@ import Product from '././classes/Product.js';
 const cart = new DoublyLinkedList();
 cart.loadFromCache();
 
-// Agregar un producto
+// Agregamos un producto uwu
 const newProduct = new Product(1, "Producto A", 100, 2);
 cart.addProduct(newProduct);
 
-// Eliminar un producto
+// Eliminanado un producto owo
 cart.removeProduct(1);
 
 // Obtener todos los productos
 const allProducts = cart.getAllProducts();
 console.log(allProducts);
 
-// Enviar datos al servidor
+// Enviar datos al servidor de laravel
 const sendCartToServer = async (cart) => {
+    // Enviar el carrito al controlador de php en caso de usar la base de datos (Usuario logeado)
     const response = await fetch('/cart', {
         method: 'POST',
         headers: {
@@ -29,10 +30,9 @@ const sendCartToServer = async (cart) => {
     console.log(data);
 };
 
-// Enviar el carrito al servidor
 sendCartToServer(cart);
 
 document.addEventListener('DOMContentLoaded', () => {
     cart.loadFromCache();
-    // Aquí puedes agregar lógica adicional para actualizar la interfaz de usuario con los productos cargados
+    // Aqui vamos a poner para actualizar la interfaz al agregar un producto al carrito
 });

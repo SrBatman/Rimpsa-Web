@@ -20,17 +20,17 @@
 
             <div>
                 <x-label for="email" value="{{ __('Correo') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                <x-input id="email" class="inputs-login block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             </div>
 
             <div class="mt-4">
                 <x-label for="password" value="{{ __('Contraseña') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+                <x-input id="password" class="inputs-login block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
             </div>
 
             <div class="block mt-4">
                 <label for="remember_me" class="flex items-center">
-                    <x-checkbox id="remember_me" name="remember" />
+                    <x-checkbox class="remind-box" id="remember_me" name="remember" />
                     <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Recuerdame') }}</span>
                 </label>
             </div>
@@ -43,7 +43,7 @@
                 
                 @endif
 
-                <x-button class="ms-4">
+                <x-button class="btn-sign-in ms-4">
                     {{ __('Iniciar Sesión') }}
                 </x-button>
             </div>
