@@ -1,4 +1,5 @@
 <link href="{{ asset('assets/css/login.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('assets/css/register.css') }}">
 <div id="particles-js"></div>
 <div class="testowo min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
     <div>
@@ -14,7 +15,7 @@
     </div>
 
     <div class="divider-wrapper">   
-        <span class="divider">O</span>
+        <span class="divider">Ó</span>
     </div>
     <div class="social-section">
     <div class="mt-6">
@@ -42,7 +43,7 @@
         </div>
 
     </div>
-    <div class="overlay"></div>
+
    
 </div>
 

@@ -209,9 +209,10 @@
                     </ul>
                 </div>
                 <div class="red-filters-btn-box">
+                <div class="red-box-tools">
                 <span class="elementor-button-text">PORQUE NO SOLO ES COMPRAR UN FILTRO</span>
                 </div>
-
+                </div>
             </div>
         </div>
 
@@ -237,7 +238,10 @@
                     </ul>
                 </div>
                 <div class="red-filters-btn-box">
+                <div class="red-box-tools">
                 <span class="elementor-button-text">CONTAMOS CON LA GAMA MÁS COMPLETA EN HERRAMIENTA DE CORTE</span>
+                </div>
+
                 </div>
 
             </div>
@@ -266,7 +270,10 @@
                     </ul>
                 </div>
                 <div class="red-filters-btn-box">
-                <span class="elementor-button-text">LA FUNCIÓN DEL SISTEMA HIDRÁULICO ES INCREMENTAR LA FUERZA DE LA MAQUINA</span>
+                    <div class="red-box-tools">
+                    <span class="elementor-button-text">LA FUNCIÓN DEL SISTEMA HIDRÁULICO ES INCREMENTAR LA FUERZA DE LA MAQUINA</span>
+                    </div>
+               
                 </div>
 
             </div>
@@ -278,18 +285,85 @@
 
 <section class="sixth-section-index">
     <div class="sixth-container">
-        <div class="title-why-container">
+       <div class="sixth-box-inside">
+        
+       <div class="title-why-container">
             <h2>¿PORQUE COMPRAR EN RIMPSA? </h2>
 
         </div>
         <div class="text-reason-container">
             <div class="elementor-widget-container">
-                Somos una distribuidora nacional de piezas nuevas y usadas de calidad para la línea completa de equipos CATERPILLAR, KOMATSU, CASE, CLARK-MICHIGAN, CUMINS ETC… En RIMPSA, no sólo ofrecemos piezas duraderas sino también un servicio excelente, ahorros increíbles y el respaldo que usted necesita para obtener sus órdenes rápida y eficientemente. </div>
+                Somos una distribuidora nacional de piezas nuevas y usadas de calidad para la línea completa de equipos CATERPILLAR, KOMATSU, CASE, CLARK-MICHIGAN, CUMINS ETC… En RIMPSA, no sólo ofrecemos piezas duraderas sino también un servicio excelente, ahorros increíbles y el respaldo que usted necesita para obtener sus órdenes rápida y eficientemente. 
+            </div>
         </div>
+
+       </div>
     </div>
 </section>
 
 <section class="seventh-section-index">
+    <div class="seventh-section-left">
+        <div class="my-solution-title">
+            <h2>SOLUCION TOTAL</h2>
+        </div>
+        <div class="empaty-text-container">
+            <div class="empaty-text">
+            En RIMPSA comprendemos que proveer piezas de calidad es solo el primer paso; el segundo es proporcionar un servicio completo al cliente. 
+            </div>
+        </div>
+        <div class="index-products-container">
+            <img src="{{ asset('assets/imgs/main/varias-refacciones.jpg') }}" alt="">
+        </div>
+
+    </div>
+    <div class="seventh-section-right">
+      <div class="my-little-pony">
+      <div class="service-pack-index">
+            <h2>
+            ESTE SERVICIO INCLUYE <br> LO SIGUIENTE:
+            </h2>
+        </div>
+        <div class="services-list-included">
+            <ul>
+                <li><i class="bi bi-check-circle-fill"></i> Las cotizaciones se hacen el mismo día que se solicitan. </li>
+                <li><i class="bi bi-check-circle-fill"></i> Un personal atento y bien entrenado, con experiencia en la industria de equipos pesados, listo para ofrecerle asistencia con cualquier información técnica que usted pueda necesitar.</li>
+                <li><i class="bi bi-check-circle-fill"></i> Un inventario de piezas de repuesto nuevas y usadas adecuado a las necesidades del cliente ubicado en México y frontera.</li>
+                <li><i class="bi bi-check-circle-fill"></i> Ahorros increíbles; de hasta el 50% y 70%. </li>
+                <li><i class="bi bi-check-circle-fill"></i> Satisfacción total del cliente garantizado </li>
+                <li><i class="bi bi-check-circle-fill"></i> Envíos urgentes a cualquier parte </li>
+                <li><i class="bi bi-check-circle-fill"></i> Asesoría en cuanto a la paquetería para que el flete de sus envíos sea a bajos costos </li>
+                <li><i class="bi bi-check-circle-fill"></i> Servicio preventa, pos venta</li>
+                
+            </ul>
+        </div>
+      </div>
+
+    </div>
+
+</section>
+
+<section class="eighth-section-index">
+    <div class="eighth-container">
+    <h2 class="elementor-heading-title elementor-size-default">CONTAMOS CON REFACCIONES PARA MARCAS COMO</h2>
+    </div>
+</section>
+<section class="ninth-section-index">
+<div class="ninth-container">
+    <div class="brands-text-uwu">
+        <p>* Logotipos nombres y marcas son de sus respectivos dueños y son utilizadas únicamente con propósitos informativos.</p>
+    </div>
+    <div class="brands-image-container">
+        <div class="first-brand">
+            <img src="{{ asset('assets/imgs/case.jpg') }}" >
+
+        </div>
+        <div class="second-brand">
+            <img src="{{ asset('assets/imgs/cat.jpg') }}" >
+        </div>
+    </div>
+
+
+</div>
 
 </section>
 

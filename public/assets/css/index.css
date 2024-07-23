@@ -434,7 +434,7 @@
 
 .fifth-section-index {
     width: 100%;
-    height: 557px;
+    height: 600px;
     background-image: url('../imgs/main/bg3.jpg');
     background-size: cover;
 }
@@ -498,153 +498,154 @@
     color: #FFFFFF;
     font-family: "Montserrat", Sans-serif;
     font-weight: 400;
-  }
+}
 
 .red-box-title strong {
     color: #FFFFFF;
     font-family: "Montserrat", Sans-serif;
     font-weight: 700;
-  }
+}
 
 
-  .clientes-container{
+.clientes-container {
     width: 270px;
     height: 225px;
     position: relative;
-  }
+}
 
-  .envios-container{
+.envios-container {
     width: 270px;
     height: 225px;
     position: relative;
-  }
+}
 
-  .inventario-container{
+.inventario-container {
     width: 270px;
     height: 225px;
     position: relative;
-  }
+}
 
-  .icon-clientes {
+.icon-clientes {
     position: relative;
     align-items: center;
     display: flex;
-  }
+}
 
-  .icon-envios {
+.icon-envios {
     position: relative;
     align-items: center;
     display: flex;
     bottom: 10px;
-  }
+}
 
-  .icon-inventario {
+.icon-inventario {
     position: relative;
     align-items: center;
     display: flex;
-  }
+}
 
-  .title-clientes {
+.title-clientes {
     position: relative;
     align-items: center;
-    display:block;
+    display: block;
     top: 15px;
-  }
+}
 
 
-  .title-clientes h3 {
+.title-clientes h3 {
     color: #FFFFFF;
     position: relative;
     font-family: "Montserrat", Sans-serif;
     font-weight: 600;
     left: 80px;
-  }
+}
 
-  .title-clientes p {
+.title-clientes p {
     color: #7A7A7A;
     justify-content: center;
     left: 40px;
     position: relative;
-  }
+}
 
 
-  .title-inventario {
+.title-inventario {
     position: relative;
     align-items: center;
-    display:block;
+    display: block;
     top: 15px;
-  }
+}
 
 
-  .title-inventario h3 {
+.title-inventario h3 {
     color: #FFFFFF;
     position: relative;
     font-family: "Montserrat", Sans-serif;
     font-weight: 600;
     left: 80px;
-  }
+}
 
-  .title-inventario p {
+.title-inventario p {
     color: #7A7A7A;
     justify-content: center;
     left: 40px;
     position: relative;
-  }
+}
 
 
-  .title-envios {
+.title-envios {
     position: relative;
     align-items: center;
-    display:block;
-  }
+    display: block;
+}
 
 
-  .title-envios h3 {
+.title-envios h3 {
     color: #FFFFFF;
     position: relative;
     font-family: "Montserrat", Sans-serif;
     font-weight: 600;
     left: 80px;
-  }
+}
 
-  .title-envios p {
+.title-envios p {
     color: #7A7A7A;
     justify-content: center;
     left: 40px;
     position: relative;
-  }
+}
 
-  .mini-red-box-content {
+.mini-red-box-content {
     width: 415px;
     height: 250px;
     position: relative;
-  }
+}
 
-  .the-mini-red-box {
+.the-mini-red-box {
     display: flex;
     align-items: center;
 
-  }
+}
 
-  .red-box-paragraph p {
+.red-box-paragraph p {
     margin-top: 0;
     margin-bottom: .9rem;
     color: #FFFFFF;
     font-family: "Roboto", Sans-serif;
     font-size: 14px;
     font-weight: 400;
-  }
+}
 
-  .red-box-paragraph {
+.red-box-paragraph {
     width: 80%;
     position: relative;
     right: 50px;
-  }
+}
 
-  .fifth-section-index {
+.fifth-section-index {
     display: flex;
     align-items: center;
 }
+
 .fifth-container {
     display: flex;
     justify-content: space-around;
@@ -657,14 +658,14 @@
 .filters-image {
     position: relative;
     bottom: 40px;
-    z-index: 10; 
+    z-index: 10;
     border-radius: 5px;
 }
 
 
 .filters-image img {
     position: relative;
-    z-index: 10; 
+    z-index: 10;
     border-radius: 5px;
 }
 
@@ -682,24 +683,28 @@
     text-transform: uppercase;
     position: relative;
     bottom: 10px;
-    z-index: 10; /* Asegúrate de que el z-index es suficientemente alto */
+    z-index: 10;
+    /* Asegúrate de que el z-index es suficientemente alto */
 }
 
 .card {
     width: 380px;
     height: 236px !important;
     background-color: #FBBD00 !important;
-    overflow: visible; /* Cambia a visible para permitir que el botón se muestre fuera del card */
+    overflow: visible;
+    /* Cambia a visible para permitir que el botón se muestre fuera del card */
     transition: all 0.3s ease-in-out;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    position: relative; /* Añade posición relativa para contexto de apilamiento */
-    z-index: 1; /* Asegúrate de que el card tenga un z-index menor */
+    position: relative;
+    /* Añade posición relativa para contexto de apilamiento */
+    z-index: 1;
+    /* Asegúrate de que el card tenga un z-index menor */
 }
 
 .card:hover {
     width: 400px;
-    height: 500px !important;
+    height: 580px !important;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -708,11 +713,12 @@
     width: 350px;
     height: 400px !important;
     position: relative;
-    top: 200px;
+    top: 190px;
 }
 
 .filters-list ul {
-    list-style-type: none; /* Elimina el estilo de lista predeterminado */
+    list-style-type: none;
+    /* Elimina el estilo de lista predeterminado */
     width: 90%;
     height: 100%;
 
@@ -722,17 +728,19 @@
 .filters-list ul li {
     color: #000;
     font-weight: 800;
-    
+
 }
 
 .filters-list ul li i {
-    margin-right: 10px; /* Añade espacio entre el icono y el texto */
+    margin-right: 10px;
+    /* Añade espacio entre el icono y el texto */
 }
 
 .content {
     padding: 20px;
     transition: opacity 0.3s ease-in-out;
-    position: relative; /* Añade posición relativa para contexto de apilamiento del botón */
+    position: relative;
+    /* Añade posición relativa para contexto de apilamiento del botón */
 }
 
 .card:hover .content {
@@ -767,7 +775,7 @@
     text-transform: uppercase;
     position: relative;
     bottom: 10px;
-    z-index: 10; 
+    z-index: 10;
 }
 
 .btn-cutter-span {
@@ -790,51 +798,234 @@
     text-transform: uppercase;
     position: relative;
     bottom: 10px;
-    z-index: 10; /* Asegúrate de que el z-index es suficientemente alto */
+    z-index: 10;
+    /* Asegúrate de que el z-index es suficientemente alto */
 }
 
 .cutter-tools-image {
     position: relative;
     bottom: 40px;
-    z-index: 10; 
+    z-index: 10;
     border-radius: 5px;
 }
 
 
 .cutter-tools-image img {
     position: relative;
-    z-index: 10; 
+    z-index: 10;
     border-radius: 5px;
 }
 
 .hydraulic-image {
     position: relative;
     bottom: 40px;
-    z-index: 10; 
+    z-index: 10;
     border-radius: 5px;
 }
 
 
 .hydraulic-image img {
     position: relative;
-    z-index: 10; 
+    z-index: 10;
     border-radius: 5px;
 }
 
 
-.title-why-container h2{
+.title-why-container h2 {
     color: #000000;
     font-family: "Montserrat", Sans-serif;
     font-weight: 800;
     font-size: 2rem;
-  }
+}
 
- .elementor-widget-container {
+.elementor-widget-container {
     padding: 0px 30px 0px 20px;
-  }
+}
 
-  .elementor-widget-container {
+.elementor-widget-container {
     color: #000000;
     font-family: "Montserrat", Sans-serif;
     font-weight: 400;
+}
+
+
+.red-box-tools {
+    background-color: #8d1414;
+    width: 300px;
+    height: 69px;
+    text-align: center;
+}
+
+.red-box-tools span {
+    line-height: 1;
+    font-size: 15px;
+    font-weight: 700;
+    display: block;
+    color: #fff;
+    position: relative;
+    top: 8px;
+    width: 75%;
+    text-align: center;
+    fill: #fff;
+}
+
+.sixth-container {
+    width: 65%;
+    height: 100%;
+    align-items: center;
+    display: flex;
+}
+
+.sixth-box-inside {
+    width: 100%;
+    height: 60%;
+    position: relative;
+    align-items: center;
+}
+
+
+.title-why-container {
+    position: relative;
+    text-align: center;
+    height: 60px;
+}
+
+.title-why-container h2 {
+    position: relative;
+    text-align: center;
+    height: 50px;
+}
+
+
+.seventh-section-index {
+    height: 634px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.seventh-section-left {
+    width: 50%;
+    height: 100%;
+}
+
+.seventh-section-right {
+    width: 50%;
+    height: 100%;
+    background-image: url('../imgs/nosotros_04.jpg');
+    background-size: cover;
+
+}
+
+.eighth-section-index {
+    height: 120px;
+
+}
+
+.eighth-container {
+    width: 100%;
+    height: 100%;
+    background-image: url('../imgs/main/fondo2.png');
+    background-size: cover;
+    background-position: bottom;
+}
+
+.eighth-container h2 {
+    color: #FFFFFF;
+    font-family: "Montserrat", Sans-serif;
+    font-weight: 700;
+    text-align: center;
+    position: relative;
+    top: 10px;
   }
+
+.my-solution-title h2 {
+    color: #000000;
+    font-family: "Montserrat", Sans-serif;
+    font-weight: 700;
+    position: relative;
+    text-align: center;
+}
+
+.empaty-text {
+    width: 80%;
+}
+
+.index-products-container {
+    width: 100%;
+}
+
+.index-products-container img {
+    position: relative;
+    text-align: center;
+    display: flex;
+    top: 50px
+}
+
+
+.service-pack-index h2 {
+    color: #FFFFFF;
+    font-family: "Montserrat", Sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.seventh-section-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.my-little-pony {
+    width: 85%;
+    height: 85%;
+}
+
+.services-list-included ul {
+    list-style-type: none;
+    /* Elimina el estilo de lista predeterminado */
+    width: 90%;
+    height: 100%;
+    position: relative;
+    right: 66px;
+    top: 30px;
+}
+
+.services-list-included ul li {
+    color: #fff;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.services-list-included ul li i {
+    color: #FBBD00;
+    font-size: 1.2em;
+}
+
+.ninth-section-index{
+    height: 305px;
+}
+
+.brands-text-uwu P {
+    text-align: center;
+    
+}
+
+.brands-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.first-brand img {
+    position: relative;
+    left: 100px;
+}
+
+
+.second-brand img {
+    position: relative;
+    right: 100px;
+}

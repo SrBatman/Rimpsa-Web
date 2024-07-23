@@ -22,6 +22,7 @@
     background-color: #000000;
     color: white;
     height: 45px;
+    border: none !important;
   }
 
   
@@ -29,6 +30,7 @@
     background-color: #003a69;
     color: white;
     height: 45px;
+    border: none !important;
   }
   
 
@@ -38,9 +40,10 @@
   }
 
   .btn-sign-in {
-    background-color: rgb(180, 168, 0);
+    background-color: #fcb900;
     color: black !important;
-    border: black solid 1px !important;
+    border: none !important;
+    /* border: black solid 1px !important; */
   }
 
   .inputs-login {
@@ -51,16 +54,4 @@
   .remind-box {
     background-color: #ffffff;
     color: rgb(87, 0, 0);
-  }
-
-  @keyframes gradientAnimation {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
   }

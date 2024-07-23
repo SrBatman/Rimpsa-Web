@@ -1,0 +1,52 @@
+
+#particles-js{
+    width: 100%;
+    background-color: #050404;
+    background-image: url('../imgs/main/pixelcut-export.jpeg');
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+    height: 1420px;
+    position: absolute;
+
+    z-index: -1;
+  }
+
+  canvas{
+    position: relative;
+    height: 1320px;
+    z-index: 1;
+  }
+  
+  .btn-twitter{
+    background-color: #000000;
+    color: white;
+    height: 45px;
+    border: none !important;
+  }
+
+  
+  .btn-facebook{
+    background-color: #003a69;
+    color: white;
+    height: 45px;
+    border: none !important;
+  }
+  
+
+  .social-text {
+    position: relative;
+    right: 60px;
+  }
+
+  .register-btn {
+    background-color: #fcb900;
+    color: black !important;
+    border: none !important;
+    /* border: black solid 1px !important; */
+  }
+
+  .inputs-register {
+    background-color: #ffffff;
+    color: black;
+  }

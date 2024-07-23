@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Rimpsa - Refacciones para maquinaria pesada</title>
 	<link rel="stylesheet" href="{{ asset('assets/css/template.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/about.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/contact.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/index.css') }}">
 	<!-- Bootstrap -->
@@ -125,7 +126,7 @@
 									<li class="nav-item" id="index-option-nav">
 										<a class="nav-link active" id="index-text-nav" aria-current="page" href="{{ route('index') }}">Inicio</a>
 									</li>
-									<li class="nav-item about-option-nav">
+									<li class="nav-item" id="about-option-nav">
 										<a class="nav-link active" id="about-text-nav" aria-current="page" href="{{ route('nosotros')}}">Nosotros</a>
 									</li>
 									<li class="nav-item" id="store-option-nav">
@@ -376,9 +377,8 @@
 		document.addEventListener('DOMContentLoaded', function() {
 			
 			const currentUrl = window.location.pathname;
-			console.log(currentUrl);
 
-			if (Object.keys(routes[currentUrl]).length) {
+			if (routes[currentUrl] && Object.keys(routes[currentUrl]).length) {
 				document.getElementById(routes[currentUrl].box).style.backgroundColor = '#fcb900';
 				document.getElementById(routes[currentUrl].text).style.color = '#000';
 			}
