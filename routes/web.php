@@ -13,6 +13,8 @@ Route::controller(RoutesController::class)-> group(function(){
     Route::get('nosotros', 'about')-> name('nosotros');
     Route::get('tienda', 'store')->name('tienda');
     Route::get('contacto', 'contact')-> name('contacto');
+    Route::get('producto/{slug}', 'producto')-> name('producto');
+    Route::get('carrito', 'carrito')-> name('carrito');
 });
 
 Route::middleware([

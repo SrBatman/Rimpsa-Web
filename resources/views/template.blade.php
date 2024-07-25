@@ -8,6 +8,9 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/template.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/about.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/contact.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/store.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/carrito.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/producto.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/index.css') }}">
 	<!-- Bootstrap -->
 

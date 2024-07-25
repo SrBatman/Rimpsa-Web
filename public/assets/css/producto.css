@@ -1,0 +1,17 @@
+.producto-show-section {
+    height: 552px;
+}
+
+.product-details-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.producto-left-side img {
+    width: 490px;
+    height: 490px;
+    top: 20px;
+    position: relative;
+}
