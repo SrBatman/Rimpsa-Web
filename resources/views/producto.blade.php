@@ -13,7 +13,7 @@
         <p><strong>Precio: </strong>${{ number_format($product->price, 2) }}</p>
         <p><strong>Marca: </strong>{{ $product->brand }}</p>
         <p><strong>Stock: </strong>{{ $product->stock }}</p>
-        @livewire('product-quantity', ['productId' => $product->id, 'productName' => $product->name, 'productPrice' => $product->price, 'productImage' => $product->image])
+        @livewire('product-quantity', ['productId' => $product->id, 'productName' => $product->name, 'productPrice' => $product->price, 'productImage' => $product->image, 'productStock' => $product->stock])
       </div>
     </div>
   </div>

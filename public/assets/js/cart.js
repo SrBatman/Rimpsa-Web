@@ -56,25 +56,14 @@ class DoublyLinkedList {
         return false;
     }
 
-    findProduct(productId) {
-        let current = this.head;
-        while (current) {
-            if (current.product.id === productId) {
-                return current.product;
-            }
-            current = current.next;
-        }
-        return null;
+    getAllProducts() {
+       return this.recursividadUwU(this.head)
     }
 
-    getAllProducts() {
-        const products = [];
-        let current = this.head;
-        while (current) {
-            products.push(current.product);
-            current = current.next;
-        }
-        return products;
+    recursividadUwU(current, productos = []){
+        if (!current) return productos; //si ya no hay cabeza, se devuelve el array
+        productos.push(current.product);
+        return this.recursividadUwU(current.next, productos);
     }
 
     saveToCache() {
@@ -87,6 +76,7 @@ class DoublyLinkedList {
             products.forEach(product => this.addProduct(new Product(product.id, product.name, product.price, product.quantity, product.image)));
         }
     }
+
     clear() {
         this.head = null;
         this.tail = null;
@@ -105,6 +95,7 @@ document.addEventListener('livewire:init', function () {
         cart.addProduct(newProduct);
         cart.saveToCache();
         console.log(newProduct)
+        alert('Se ha agregado el prducto al carrito, esta alerta es temporal')
         // sendCartToServer(cart);
     });
 });

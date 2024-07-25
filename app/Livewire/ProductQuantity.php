@@ -11,18 +11,21 @@ class ProductQuantity extends Component
     public $productName;
     public $productPrice;
     public $productImage;
+    public $productStock;
 
-    public function mount($productId, $productName, $productPrice, $productImage)
+    public function mount($productId, $productName, $productPrice, $productImage, $productStock)
     {
         $this->productId = $productId;
         $this->productName = $productName;
         $this->productPrice = $productPrice;
-        $this->$productImage = $productImage;   
+        $this->productImage = $productImage; 
+        $this->productStock = $productStock; 
+
     }
 
     public function incrementQuantity()
     {
-        $this->quantityCount++;
+        if ($this->quantityCount < $this->productStock  ) $this->quantityCount++;
     }
 
     public function decrementQuantity()
