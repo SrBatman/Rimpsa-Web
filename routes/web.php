@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\RoutesController;
 use App\Http\Controllers\ProductController;
+use App\Http\Middleware\AdminMiddleware;
 
 
 
@@ -15,6 +16,13 @@ Route::controller(RoutesController::class)-> group(function(){
     Route::get('contacto', 'contact')-> name('contacto');
     Route::get('producto/{slug}', 'producto')-> name('producto');
     Route::get('carrito', 'carrito')-> name('carrito');
+    Route::get('/search-products', 'searchProducts')->name('search.products');
+});
+
+Route::prefix('admin')->middleware(['auth', AdminMiddleware::class])->group(function () {
+    Route::get('dashboard', [App\Http\Controllers\Admin\Dashboard::class, 'index']);
+
+    // Otras rutas
 });
 
 Route::middleware([

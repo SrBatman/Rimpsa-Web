@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/index.css') }}">
 	<!-- Bootstrap -->
 
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 	<link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/navbars/">
 	<link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -21,7 +22,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 
 <body>
@@ -153,6 +154,14 @@
 
 				</div>
 				<div class="contenedor-img-contacto">
+				   <div class="cart-icon-template-container">
+					
+				   <a href="{{route('carrito')}}">
+					<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+					<div class="space-between-this-shits"></div>
+				   <h2 class="cart-quantity-template" id="cart-quantity-template">Carrito (0)</h2>
+				   </a>
+				   </div>
 					<a href="{{route('contacto')}}">
 						<img src="{{ asset('assets/imgs/contacto.png') }}" alt="contacto" height="74px" width="125">
 					</a>
@@ -388,6 +397,24 @@
 		});
 	</script>
 
+	<script type="module" src="{{ asset('assets/js/template.js') }}"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+	<script>
+// 		Toastify({
+//   text: "✔ This is a toast",
+//   duration: 3000,
+//   destination: "https://github.com/apvarun/toastify-js",
+//   newWindow: true,
+//   gravity: "top", // `top` or `bottom`
+//   position: "right", // `left`, `center` or `right`
+//   stopOnFocus: true, // Prevents dismissing of toast on hover
+//   style: {
+//     background: "#177323",
+// 	width: "300px"
+//   },
+//   onClick: function(){} // Callback after click
+// }).showToast();
+	</script>
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>

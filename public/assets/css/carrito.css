@@ -1,8 +1,106 @@
 .carrito-section {
-    height: 552px;
+    height: 752px;
+    display: flex;
+}
+
+.here-goes-carrito-title {
+    height: 100px;
+    width: 100%;
+    background-color: #fcb900;
 }
 
 .carrito-container {
     text-align: center;
     width: 100%;
 }
+
+/* .cart-items-container {
+   position: relative;
+   top: 250px;
+} */
+
+.products-table {
+    border: 2px solid #000;
+}
+
+.products-table-head th {
+    border: 2px solid #050505;
+    background-color: #000;
+    color: #fff;
+    height: 54px;
+}
+
+.cart-quantity-per-product {
+    width: 130px;
+}
+
+.cart-total-one {
+    width: 140px;
+}
+
+.cart-total-two {
+    width: 150px;
+}
+
+.cart-romove-col {
+    width: 80px;
+}
+
+.total-amount-box {
+    position: relative;
+    top: 60px;
+    right: 160px;
+    border: #000 2px solid;
+    width: 350px;
+    height: 180px;
+}
+
+
+.total-amount-box h3{
+    position: relative;
+    text-align: center;
+}
+
+.btn-finish-shopping {
+    position: relative;
+    text-align: center;
+    left: 70px;
+    width: 200px;
+    top: 20px;
+    height: 40px;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+
+.cart-product-img-col {
+    width: 127px;
+}
+
+.cart-product-name-col {
+  width: 454px;
+}
+
+.scrollable-table-container {
+    max-width: 1090px;
+    position: relative;
+    top: 20px;
+  }
+
+
+  .bi-trash3-fill {
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+
+
+/* <th class="cart-description item">Imagen</th>
+<th class="cart-product-name item">Descripción de producto</th>
+<th class="cart-qty item">Cantidad</th>
+<th class="cart-total last-item">Precio unitario</th>
+<th class="cart-total last-item">Precio total</th>
+<th class="cart-romove item">Eliminar</th> */

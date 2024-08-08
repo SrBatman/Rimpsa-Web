@@ -203,7 +203,39 @@
 
 .contenedor-img-contacto {
   position: relative;
+  display: flex;
+  width: 300px;
   right: 150px;
+}
+
+.cart-icon-template-container {
+  position: relative;
+  display: flex;
+  width: 150px;
+  right: 50px;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.cart-icon-template-container h2{
+  position: relative;
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.cart-icon-template-container a{
+  position: relative;
+  display: flex;
+  color: #fff;
+  text-decoration: none;
+  top: 30px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.space-between-this-shits{
+  width: 20px;
 }
 
 .main-option {
@@ -557,4 +589,11 @@
   font-family: "Montserrat", Sans-serif;
   font-size: 14px;
   font-weight: 400;
+}
+
+.toastify {
+  width: 350px !important;
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  color: #ffffff !important;
 }
