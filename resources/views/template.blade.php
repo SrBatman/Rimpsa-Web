@@ -22,7 +22,8 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/imgs/cropped-logo.png') }}">
 </head>
 
 <body>
@@ -88,9 +89,27 @@
 							<!-- separacion -->
 						</div>
 						<div class="text-end">
-							<!-- <button type="button" class="btn-login" onclick="window.location=`{{ route('login') }}`">Inicio sesión</button> -->
+							@auth
+							<div class="user-dropdown">
+								<a href="#" class="user-button" style="--clr:#fff" >
+									<img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" class="user-avatar">
+									<span class="user-name">{{ Auth::user()->name }}</span>
+								</a>
+								<div class="dropdown-content">
+									<a href="{{ route('profile.show') }}">Perfil</a>
+									<form method="POST" action="{{ route('logout') }}">
+										@csrf
+										<button type="submit" class="logout-btn">Cerrar sesión</button>
+									</form>
+								</div>
+							</div>
+							<!-- <a href="{{ route('login') }}" style="--clr:#fff" class="login-btn"><span>Inicio sesión</span><i></i></a> -->
+							@else
 							<a href="{{ route('login') }}" style="--clr:#fff" class="login-btn"><span>Inicio sesión</span><i></i></a>
 							<a href="{{ route('register') }}" style="--clr:#ffcc1e" class="login-btn"><span>Registrarse</span><i></i></a>
+							@endauth
+							<!-- <button type="button" class="btn-login" onclick="window.location=`{{ route('login') }}`">Inicio sesión</button> -->
+
 							<!-- <button type="button" class="btn btn-warning" onclick="window.location=`{{ route('register') }}`">Registrarse</button> -->
 						</div>
 						<div>
@@ -154,14 +173,14 @@
 
 				</div>
 				<div class="contenedor-img-contacto">
-				   <div class="cart-icon-template-container">
-					
-				   <a href="{{route('carrito')}}">
-					<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-					<div class="space-between-this-shits"></div>
-				   <h2 class="cart-quantity-template" id="cart-quantity-template">Carrito (0)</h2>
-				   </a>
-				   </div>
+					<div class="cart-icon-template-container">
+
+						<a href="{{route('carrito')}}">
+							<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+							<div class="space-between-this-shits"></div>
+							<h2 class="cart-quantity-template" id="cart-quantity-template">Carrito (0)</h2>
+						</a>
+					</div>
 					<a href="{{route('contacto')}}">
 						<img src="{{ asset('assets/imgs/contacto.png') }}" alt="contacto" height="74px" width="125">
 					</a>
@@ -387,7 +406,7 @@
 			}
 		}
 		document.addEventListener('DOMContentLoaded', function() {
-			
+
 			const currentUrl = window.location.pathname;
 
 			if (routes[currentUrl] && Object.keys(routes[currentUrl]).length) {
@@ -400,20 +419,12 @@
 	<script type="module" src="{{ asset('assets/js/template.js') }}"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 	<script>
-// 		Toastify({
-//   text: "✔ This is a toast",
-//   duration: 3000,
-//   destination: "https://github.com/apvarun/toastify-js",
-//   newWindow: true,
-//   gravity: "top", // `top` or `bottom`
-//   position: "right", // `left`, `center` or `right`
-//   stopOnFocus: true, // Prevents dismissing of toast on hover
-//   style: {
-//     background: "#177323",
-// 	width: "300px"
-//   },
-//   onClick: function(){} // Callback after click
-// }).showToast();
+		const userButton = document.querySelector('.user-dropdown .user-button');
+		const dropdownContent = document.querySelector('.user-dropdown .dropdown-content');
+
+		userButton.addEventListener('click', function() {
+			dropdownContent.classList.toggle('show');
+		});
 	</script>
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->

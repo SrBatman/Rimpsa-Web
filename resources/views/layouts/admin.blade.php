@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="{{ asset('admin/vendor_assets/css/wickedpicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/style.css') }}">
     <!-- endinject -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin/img/pc_logo.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/imgs/cropped-logo.png') }}">
 
     @livewireStyles
 </head>
@@ -44,7 +44,7 @@
             @include('layouts.inc.admin.footer')
         </main>
 
-        <div id="overlayer">
+        <div id="overlayer" style="background: #313338;">
             <span class="loader-overlay">
                 <div class="atbd-spin-dots spin-lg">
                     <span class="spin-dot badge-dot dot-primary"></span>

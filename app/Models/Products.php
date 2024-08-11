@@ -18,4 +18,9 @@ class Products extends Model
         'status',
         'stock',
     ];
+
+
+    public function category(){
+        return $this->belongsTo(Categories::class, 'category_id', 'id');
+    }
 }

@@ -166,6 +166,7 @@
 .producto-right-side {
     position: relative;
     right: 250px;
+    max-width: 516px;
     top: 100px;
 }
 

@@ -17,12 +17,67 @@ Route::controller(RoutesController::class)-> group(function(){
     Route::get('producto/{slug}', 'producto')-> name('producto');
     Route::get('carrito', 'carrito')-> name('carrito');
     Route::get('/search-products', 'searchProducts')->name('search.products');
+    
 });
 
 Route::prefix('admin')->middleware(['auth', AdminMiddleware::class])->group(function () {
-    Route::get('dashboard', [App\Http\Controllers\Admin\Dashboard::class, 'index']);
 
-    // Otras rutas
+    Route::get('/', function () {
+        return redirect()->route('admin.dashboard');
+    });
+    Route::get('dashboard', [App\Http\Controllers\Admin\Dashboard::class, 'index'])->name('admin.dashboard');
+
+    // Rutas de productos
+    Route::controller(App\Http\Controllers\Admin\ProductsController::class)->group(function () {
+        Route::get('/products', 'index');
+  
+        Route::post('/products','store');
+        Route::get('/products/edit/{product}', 'edit');
+        Route::put('/products/{product}', 'update');
+
+        Route::delete('/products/{product}', 'destroy');
+    });
+
+    // Rutas de categorias
+    Route::controller(App\Http\Controllers\Admin\CategoriesController::class)->group(function () {
+        Route::get('/categories', 'index');
+
+        Route::post('/categories','store');
+        Route::get('/categories/edit/{category}', 'edit');
+        Route::put('/categories/{category}', 'update');
+
+        Route::delete('/categories/{category}', 'destroy');
+    });
+
+    //Rutas de marcas
+    Route::controller(App\Http\Controllers\Admin\BrandsController::class)->group(function () {
+        Route::get('/brands', 'index');
+        
+        Route::post('/brands','store');
+        Route::get('/brands/edit/{brand}', 'edit');
+        Route::put('/brands/{brand}', 'update');
+
+        Route::delete('/brands/{brand}', 'destroy');
+    });
+
+
+    //Rutas de logs
+    Route::controller(App\Http\Controllers\Admin\LogsController::class)->group(function () {
+        Route::get('/logs', 'index');
+        Route::post('/logs','store');
+    });
+
+
+    //Rutas de ordenes
+    Route::controller(App\Http\Controllers\Admin\OrdersController::class)->group(function () {
+        Route::get('/orders', 'index');
+        Route::get('/orders/{orderId}', 'show');
+        Route::put('/orders/{orderId}', 'updateOrderStatus');
+    
+        Route::get('/invoice/{orderId}', 'viewInvoice');
+        Route::get('/invoice/{orderId}/generate', 'generateInvoice');
+        Route::get('/orders/{orderId}/mail', 'sendInvoiceEmail')->name('admin.orders.mailInvoice'); // Nueva ruta agregada
+    });
 });
 
 Route::middleware([
@@ -33,6 +88,8 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('checkout', [App\Http\Controllers\CheckoutController::class, 'index']);
 });
 
 // Twitter Login

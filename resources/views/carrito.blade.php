@@ -48,7 +48,8 @@
           </tr>
         </tbody>
       </table>
-      <button id="checkout-button" class="btn-finish-shopping" ><i class="fa fa-shopping-bag" aria-hidden="true"></i> &nbsp;&nbsp;Finalizar compra</button>
+      <a href="{{ url('/checkout') }}"> Finalizar compra </a>
+      <!-- <button id="checkout-button" class="btn-finish-shopping" ><i class="fa fa-shopping-bag" aria-hidden="true"></i> &nbsp;&nbsp;Finalizar compra</button> -->
     </div>
   </div>
 </section>

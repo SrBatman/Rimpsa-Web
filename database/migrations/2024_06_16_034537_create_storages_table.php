@@ -13,30 +13,38 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->decimal('total_amount', 10, 2);
+            $table->integer('user_id')->nullable();
+            $table->string('tracking_no');
+            $table->string('fullname');
+            $table->string('email');
+            $table->string('phone');
+            $table->string('pincode');
+            $table->mediumText('address');
             $table->string('status');
+            $table->string('payment_mode');
+            $table->string('payment_id')->nullable();
             $table->timestamps();
         });
 
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained()->onDelete('cascade');
-            $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            $table->integer('order_id');
+            $table->integer('product_id');
+            $table->integer('product_color_id')->nullable();
             $table->integer('quantity');
-            $table->decimal('price', 10, 2);
+            $table->integer('price');
             $table->timestamps();
         });
 
-        Schema::create('shopping_carts', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->timestamps();
-        });
+        // Schema::create('shopping_carts', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->foreignId('user_id')->constrained()->onDelete('cascade');
+        //     $table->timestamps();
+        // });
 
-        Schema::create('cart_items', function (Blueprint $table) {
+        Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cart_id')->constrained('shopping_carts')->onDelete('cascade');
+            $table->integer('user_id');
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
             $table->integer('quantity');
             $table->timestamps();
@@ -48,9 +56,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('orders');
         Schema::dropIfExists('order_items');
-        Schema::dropIfExists('shopping_carts');
+        Schema::dropIfExists('orders');
+        // Schema::dropIfExists('shopping_carts');
         Schema::dropIfExists('cart_items');
     }
 };

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->boolean('status');
             $table->timestamps();
         });
 
@@ -25,7 +26,7 @@ return new class extends Migration
             $table->string('brand')->nullable();
             $table->text('description');
             $table->decimal('price', 10, 2);
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->boolean('status');
             $table->integer('stock');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
@@ -47,9 +48,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
-        Schema::dropIfExists('products');
         Schema::dropIfExists('product_movements');
+        Schema::dropIfExists('products');
+        Schema::dropIfExists('categories');
+       
         
     }
 };

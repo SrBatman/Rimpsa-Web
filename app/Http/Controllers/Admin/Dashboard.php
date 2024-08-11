@@ -9,6 +9,7 @@ use App\Models\Payments;
 use App\Models\Categories;
 use App\Models\User;
 use App\Models\Orders;
+use App\Models\Brands;
 use Illuminate\Support\Carbon;
 
 class Dashboard extends Controller
@@ -18,6 +19,7 @@ class Dashboard extends Controller
     {
         $totalProducts = Products::count();
         $totalCategories = Categories::count();
+        $totalBrands = Brands::count();
         $totalPayments = Payments::count();
 
 
@@ -34,6 +36,6 @@ class Dashboard extends Controller
         $thisMonthOrder = Orders::whereMonth('created_at', $thisMonth)->count();
         $thisYearOrder = Orders::whereYear('created_at', $thisYear)->count();
 
-        return view('admin.dashboard', compact('totalProducts','totalCategories','totalPayments', 'totalAllUsers','totalUser','totalAdmin','totalOrder','todayOrder','thisMonthOrder','thisYearOrder'));
+        return view('admin.dashboard', compact('totalProducts','totalCategories','totalPayments', 'totalBrands','totalAllUsers','totalUser','totalAdmin','totalOrder','todayOrder','thisMonthOrder','thisYearOrder'));
     }
 }
