@@ -17,10 +17,6 @@ return new class extends Migration
             $table->string('slug');
             $table->longText('description');
             $table->string('image')->nullable();
-            
-            $table->string('meta_title');
-            $table->string('meta_keyword');
-            $table->mediumText('meta_description');
 
             $table->tinyInteger('status')->default('0')->comment('0=visible,1=hidden');
             $table->timestamps();

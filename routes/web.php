@@ -72,6 +72,16 @@ Route::prefix('admin')->middleware(['auth', AdminMiddleware::class])->group(func
         Route::get('/monitoring', 'index');
     });
 
+    //Rutas de usuarios
+    Route::controller(App\Http\Controllers\Admin\UsersController::class)->group(function () {
+        Route::get('/users', 'index');
+  
+        Route::post('/users','store');
+        Route::get('/users/edit/{user}', 'edit');
+        Route::put('/users/{user}', 'update');
+
+        Route::delete('/users/{user}', 'destroy');
+    });
 
     //Rutas de ordenes
     Route::controller(App\Http\Controllers\Admin\OrdersController::class)->group(function () {

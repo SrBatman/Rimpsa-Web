@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Categories;
 use App\Models\Products;
-use App\Models\Logs; // Add this line to import the Logs class
+use App\Models\Logs; 
 use App\Http\Requests\CategoryFormRequest;
 
 

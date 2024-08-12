@@ -8,17 +8,21 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Address;
+use App\Models\Orders;
 
-class PlaceOrderMailable extends Mailable
+class InvoiceOrderMailable extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $order;
+    public $totalPrice;
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(Orders $order, $totalPrice)
     {
-        //
+        $this->order = $order;
+        $this->totalPrice = $totalPrice; // Asigna el precio total a la variable $totalPrice
     }
 
     /**
@@ -27,7 +31,11 @@ class PlaceOrderMailable extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: '¡Pedido realizado con éxito!',
+            from: new Address('rimpsa2024@gmail.com', 'Adrian Delgado'),
+            replyTo: [
+                new Address('hectoradolfoolivares@gmail.com', 'Taylor Swift'),
+            ],
+            subject: 'Facturación de su pedido',
         );
     }
 
@@ -37,7 +45,8 @@ class PlaceOrderMailable extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.invoice',
+            with: ['order' => $this->order, 'totalPrice' => $this->totalPrice],
         );
     }
 

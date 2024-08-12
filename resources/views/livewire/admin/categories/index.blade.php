@@ -51,10 +51,10 @@
                                                     <td style="background: #313338;  color: #fff;">
                                                         <ul class="mb-0 d-flex flex-wrap">
                                                             <li>
-                                                                <a href="{{ url('admin/categories/edit/'.$category->id.'') }}" class="btn btn-primary btn-outline-lighten__height mr-2">Edit</a>
+                                                                <a href="{{ url('admin/categories/edit/'.$category->id.'') }}" class="btn btn-primary btn-outline-lighten__height mr-2">Editar</a>
                                                             </li>
                                                             <li>
-                                                                <button type="button" onclick="modalCategoryDel('{{ $category->id }}', '{{ $category->name }}')" class="btn btn-danger btn-outline-lighten__height" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                                                                <button type="button" onclick="modalCategoryDel('{{ $category->id }}', '{{ $category->name }}')" class="btn btn-danger btn-outline-lighten__height" data-toggle="modal" data-target="#deleteModal">Eliminar</button>
                                                                 
                                                             </li>
                                                         </ul>

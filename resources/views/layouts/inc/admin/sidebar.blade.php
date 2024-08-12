@@ -62,7 +62,12 @@
                                 <span class="menu-text" style="color: #fff;">Monitoreo almacén</span>
                             </a>
                         </li>
-
+                        <li>
+                            <a href="{{ url('admin/users') }}" class="{{ Request::is('admin/users') ? 'active':'' }}">
+                                <span data-feather="users" class="nav-icon"></span>
+                                <span class="menu-text" style="color: #fff;">Usuarios</span>
+                            </a>
+                        </li>
                         <li class="has-child">
                             <a href="#" class="{{ Request::is('admin/buys*') ? 'active':'' }}">
                                 <span data-feather="list" class="nav-icon"></span>
@@ -94,23 +99,7 @@
                                 </li>
                             </ul>
                         </li>
-             
-
-                        <li>
-                            <a href="{{ url('admin/users') }}" class="{{ Request::is('admin/users') ? 'active':'' }}">
-                                <span data-feather="users" class="nav-icon"></span>
-                                <span class="menu-text" style="color: #fff;">Usuarios</span>
-                            </a>
-                        </li>
-
-                
-                        <li>
-                            <a href="{{ url('admin/settings') }}" class="{{ Request::is('admin/settings') ? 'active':'' }}">
-                                <span data-feather="settings" class="nav-icon"></span>
-                                <span class="menu-text" style="color: #fff;">
-                                    Configuración del sitio</span>
-                            </a>
-                        </li>
+                       
                     </ul>
                 </div>
             </div>

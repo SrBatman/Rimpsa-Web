@@ -11,13 +11,10 @@
                         <div class="footer-menu text-right">
                             <ul>
                                 <li>
-                                    <a href="#">Acerca de</a>
+                                    <a href="https://jorge-gutierrez-1110.github.io/Neopales/">Acerca de:</a>
                                 </li>
                                 <li>
-                                    <a href="#">Equipo:</a>
-                                </li>
-                                <li>
-                                    <a href="#">Contacto</a>
+                                    <a href="https://jorge-gutierrez-1110.github.io/Neopales/">Neopales</a>
                                 </li>
                             </ul>
                         </div>

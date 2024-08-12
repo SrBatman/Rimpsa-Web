@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; /* Azul bajito */
+    color: #000; /* Negro */
+    margin: 0;
+    padding: 20px;
+}
+
+.invoice-container {
+    background-color: #fff; /* Blanco */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+h1 {
+    color: #005a9e; /* Azul */
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Gris claro */
+}
+th {
+    background-color: #f2f2f2; /* Gris muy claro */
+}
+
+.total {
+    font-weight: bold;
+}

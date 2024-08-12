@@ -127,9 +127,9 @@
                                                         <a href="{{ url('admin/products/edit/'.$product->id) }}" class="btn btn-primary btn-outline-lighten__height mr-2">Editar</a>
                                                     </li>
                                                     <li>
-                                                        {{-- <button type="button" wire:click="deleteProduct({{ $product->id }})" class="btn btn-danger btn-outline-lighten__height" data-toggle="modal" data-target="#deleteModal">Borrar</button>--}}
-                                                        <button type="button" onclick="modalProductDel('{{ $product->id }}', '{{ $product->name }}')" class="btn btn-danger btn-outline-lighten__height" data-toggle="modal" data-target="#deleteModal">Borrar</button>
-                                                        {{-- <a href="#" wire:click="deleteCategory({{ $category->id }})" data-bs-toggle="modal" data-bs-target="#deleteModal" class="btn btn-danger btn-sm">Borrar</a> --}}
+                                                       
+                                                        <button type="button" onclick="modalProductDel('{{ $product->id }}', '{{ $product->name }}')" class="btn btn-danger btn-outline-lighten__height" data-toggle="modal" data-target="#deleteModal">Eliminar</button>
+                                                       
                                                     </li>
                                                 </ul>
                                             </td>
@@ -174,10 +174,3 @@
     
  
 </script>
-<!-- @push('script')
-    <script>
-        window.addEventListener('close-modal', event => {
-            $('#deleteModal').modal('hide');
-        });
-    </script>
-@endpush -->

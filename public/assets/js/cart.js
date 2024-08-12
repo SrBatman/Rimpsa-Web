@@ -1,7 +1,7 @@
 import DoublyLinkedList from '././classes/Doublylinkedlist.js';
 import Product from '././classes/Product.js';
 
-document.addEventListener('livewire:init', function () {
+document.addEventListener('livewire:init', async function () {
     Livewire.on('productAdded', (product) => {
         const cart = new DoublyLinkedList();
         console.log('Se ejecuta el evento de livewire');
@@ -31,15 +31,9 @@ document.addEventListener('livewire:init', function () {
             },
             onClick: function() {} // Callback after click
         }).showToast();
-        // console.log(window.isAuthenticated);
-        // if (window.isAuthenticated) {
-            
-        //     console.log('Usuario logueado, se envía el carrito al servidor.');
-        //     sendCartToServer(cart);
-        // } else {
-        //     console.log('Usuario no logueado, no se envía el carrito al servidor.');
-        // }
+       
     });
+    
 });
 
 const cartTotalElement = document.getElementById('cart-quantity-template');

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Detalles de mi orden - DecoHogar Muebles')
+@section('title', 'Rimpsa – Detalles de pedidos')
 
 @section('content')
 

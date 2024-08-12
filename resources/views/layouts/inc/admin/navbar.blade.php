@@ -32,83 +32,20 @@
                         <input class="form-control mr-sm-2 box-shadow-none" type="text" placeholder="Search...">
                     </form>
                 </li>
-                {{-- <li class="nav-settings">
-                    <div class="dropdown-custom">
-                        <a href="javascript:;" class="nav-item-toggle">
-                            <span data-feather="settings"></span></a>
-                        <div class="dropdown-wrapper dropdown-wrapper--large">
-                            <ul class="list-settings">
-                                <li class="d-flex">
-                                    <div class="mr-3"><img src="{{ asset('admin/img/mail.png') }}" alt=""></div>
-                                    <div class="flex-grow-1">
-                                        <h6>
-                                            <a href="" class="stretched-link">Todos los destacados</a>
-                                        </h6>
-                                        <p>Introducing Increment subscriptions </p>
-                                    </div>
-                                </li>
-                                <li class="d-flex">
-                                    <div class="mr-3"><img src="{{ asset('admin/img/color-palette.png') }}" alt=""></div>
-                                    <div class="flex-grow-1">
-                                        <h6>
-                                            <a href="" class="stretched-link">Temas</a>
-                                        </h6>
-                                        <p>Temas third party que son compatibles</p>
-                                    </div>
-                                </li>
-                                <li class="d-flex">
-                                    <div class="mr-3"><img src="{{ asset('admin/img/home.png') }}" alt=""></div>
-                                    <div class="flex-grow-1">
-                                        <h6>
-                                            <a href="" class="stretched-link">Pagos</a>
-                                        </h6>
-                                        <p>Manejamos millones de pesos</p>
-                                    </div>
-                                </li>
-                                <li class="d-flex">
-                                    <div class="mr-3"><img src="{{ asset('admin/img/video-camera.png') }}" alt=""></div>
-                                    <div class="flex-grow-1">
-                                        <h6>
-                                            <a href="" class="stretched-link">Design Mockups</a>
-                                        </h6>
-                                        <p>Comparta imágenes de planificación con los clientes</p>
-                                    </div>
-                                </li>
-                                <li class="d-flex">
-                                    <div class="mr-3"><img src="{{ asset('admin/img/document.png') }}" alt=""></div>
-                                    <div class="flex-grow-1">
-                                        <h6>
-                                            <a href="" class="stretched-link">Planeacion de contenido</a>
-                                        </h6>
-                                        <p>Centralice la recopilación y edición de contenidos</p>
-                                    </div>
-                                </li>
-                                <li class="d-flex">
-                                    <div class="mr-3"><img src="{{ asset('admin/img/microphone.png') }}" alt=""></div>
-                                    <div class="flex-grow-1">
-                                        <h6>
-                                            <a href="" class="stretched-link">Creador de diagramas</a>
-                                        </h6>
-                                        <p>Planificar flujos de usuarios y escenarios de prueba</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li> --}}
+     
                 <!-- ends: .nav-settings -->
 
                 <li class="nav-author">
-                    <div class="dropdown-custom">
+                    <div class="dropdown-custom" style="background: #2b2d31;">
                         <a href="javascript:;" class="nav-item-toggle"><img src="{{ asset('admin/img/author-nav.jpg') }}" alt="" class="rounded-circle"></a>
-                        <div class="dropdown-wrapper">
-                            <div class="nav-author__info">
-                                <div class="author-img">
+                        <div class="dropdown-wrapper" style="background: #2b2d31;">
+                            <div class="nav-author__info" style="background: #2b2d31; color:#fff;">
+                                <div class="author-img" style="background: #2b2d31; color:#fff;">
                                     <img src="{{ asset('admin/img/author-nav.jpg') }}" alt="" class="rounded-circle">
                                 </div>
                                 <div>
-                                    <h6>Administrador</h6>
-                                    <span>Decohogar Muebles</span>
+                                    <h6 style="color:#fff;">Administrador</h6>
+                                    <span>Rimpsa - Refacciones para maquinaria pesada</span>
                                 </div>
                             </div>
                             <div class="nav-author__options">
@@ -136,8 +73,8 @@
                                 </ul> --}}
                                     <a class="nav-author__signout" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
-                                        <span data-feather="log-out"></span>{{ __('Logout') }}
+                                                        document.getElementById('logout-form').submit();" style="background: #2b2d31; color:#fff;">
+                                        <span data-feather="log-out" style="background: #2b2d31; color:#fff;"></span>{{ __('Cerrar sesión') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

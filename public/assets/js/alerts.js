@@ -391,3 +391,120 @@ function modalBrandAdd() {
 
 }
 
+
+
+function modalUserDel(userId, userName) {
+  Swal.fire({
+    title: '¿Estás seguro?',
+    html: `<div>Estas a punto de eliminar el usuario:<br>\n${userName}.</div>`,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sí, eliminar!',
+    cancelButtonText: 'No, cancelar!'
+  }).then((result) => {
+    if (result.isConfirmed) deleteUser(userId);
+    
+  });
+}
+
+
+function deleteUser(userId) {
+  const splitedName = window.adminName.split(' ')
+  const adminNames = `${splitedName[0]} ${splitedName[1]}`;
+
+  fetch(`/admin/users/${userId}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    },
+    body: JSON.stringify({ adminName: adminNames })
+  })
+    .then(response => response.json())
+    .then(data => {
+      
+      if (data.success) {
+        Swal.fire(
+          '¡Eliminado!',
+          'Usuario eliminado con exito.',
+          'success'
+        ).then(() => {
+          // Optionally, reload the page or remove the product from the UI
+          location.reload();
+        });
+      } else {
+        Swal.fire(
+          'Error!',
+          'Algo ha salido mal.',
+          'error'
+        );
+      }
+    })
+    .catch(error => {
+      Swal.fire(
+        'Error!',
+        'Algo ha salido mal.',
+        'error'
+      );
+    });
+}
+
+
+function modalUserAdd() {
+  const splitedName = window.adminName.split(' ')
+  const adminNames = `${splitedName[0]} ${splitedName[1]}`;
+
+
+  Swal.fire({
+    title: "Nueva usuario",
+    html: `
+      <form id="product-form" action="/admin/users" method="POST">\
+      <input type="hidden" name="adminName" value="${adminNames}" autocomplete="off">
+      <input type="hidden" name="_token" value=${document.querySelector('meta[name="csrf-token"]').getAttribute('content')} autocomplete="off">
+      <div class="form-floating">
+      <label for="name" style="color: #fff;">Nombre</label>
+      <input id="name" name="name" class="swal2-input">
+      </div>
+      <div class="form-floating">
+      <label for="name" style="color: #fff;">Email</label>
+      <input id="email" name="email" class="swal2-input">
+      </div>
+      <div class="form-floating">
+      <label for="name" style="color: #fff;">Contraseña</label>
+      <input id="password" name="password" class="swal2-input">
+      </div>
+      <div class="form-floating">
+      <label for="name" style="color: #fff;">Rol</label>
+       <select id="role_as" name="role_as" class="swal2-input">
+      <option value="1">Administrador</option>
+      <option value="0">Usuario</option>
+      </select>
+      </div>
+      </form>
+    `,
+    customClass: {
+      popup: 'custom-swal-popup'
+    },
+    showCancelButton: true,
+    confirmButtonColor: '#2a913a',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sí, agregar!',
+    cancelButtonText: 'No, cancelar!',
+    preConfirm: () => {
+      const form = document.getElementById('product-form');
+      const name = form.querySelector('#name').value.trim();
+
+      // Validaciones personalizadas
+      if (!name ) {
+        Swal.showValidationMessage('Todos los campos son obligatorios.');
+        return false;
+      }
+ 
+      return form.submit();
+    }
+
+  });
+
+}

@@ -22,7 +22,7 @@ SET time_zone = "+00:00";
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role_as`, `created_at`, `updated_at`) VALUES
-(10, 'Admin', 'rimpsa@admin.com', '$2y$12$TvaAvTEhAAWU9XbrCdIs5uAqmwN5m79FGTuldV58Wni91OwkNjENq', 1,  '2023-05-18 16:40:31', '2023-05-18 16:40:31');
+(10, 'Admin Juan', 'rimpsa@admin.com', '$2y$12$TvaAvTEhAAWU9XbrCdIs5uAqmwN5m79FGTuldV58Wni91OwkNjENq', 1,  '2023-05-18 16:40:31', '2023-05-18 16:40:31');
 
 
 INSERT INTO `brands` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
