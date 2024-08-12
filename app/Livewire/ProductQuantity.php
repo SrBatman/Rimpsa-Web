@@ -3,6 +3,9 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use App\Models\Carts;
+use Illuminate\Support\Facades\Auth;
+
 
 class ProductQuantity extends Component
 {
@@ -41,6 +44,17 @@ class ProductQuantity extends Component
 
     public function addToCart()
     {
+
+        $user = Auth::user();
+
+        if ($user !== null) {
+            Carts::updateOrCreate([
+                'user_id' => $user->id,
+                'product_id' => $this->productId],
+            ['quantity' => $this->quantityCount]
+        );
+        }
+        
         $this->dispatch('productAdded', [
             'id' => $this->productId,
             'name' => $this->productName,

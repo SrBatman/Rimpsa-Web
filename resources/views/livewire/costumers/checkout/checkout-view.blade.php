@@ -93,7 +93,8 @@
             @else
                 <div class="card-sss card-body-sss shadow text-center p-md-5" style="width:700px!important;">
                     <h4>No hay artículos en el carrito para pagar</h4>
-                    <a href="{{ url('collections') }}" class="btn btn-warning" style="height: 30px !important; width:200px;">Compra Ahora</a>
+                    <img src="{{ asset('assets/imgs/shopping-cart-animated.gif') }}" alt="cute-gif" height="200px">
+                    <a href="{{ route('tienda') }}" class="btn btn-warning" style="height: 40px !important; width:400px; font-size: 20px; display: block; text-align: center;"><strong>Compra Ahora</strong></a>
                 </div>
             @endif
         </div>

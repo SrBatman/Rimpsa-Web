@@ -1,3 +1,5 @@
+
+
 function modalProductDel(productId, productName) {
   Swal.fire({
     title: '¿Estás seguro?',
@@ -16,14 +18,16 @@ function modalProductDel(productId, productName) {
 
 function deleteProduct(productId) {
   // Example AJAX call to delete the product
-
+  const splitedName = window.adminName.split(' ')
+  const adminNames = `${splitedName[0]} ${splitedName[1]}`;
 
   fetch(`/admin/products/${productId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
       'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-    }
+    },
+    body: JSON.stringify({ adminName: adminNames })
   })
     .then(response => response.json())
     .then(data => {
@@ -55,7 +59,9 @@ function deleteProduct(productId) {
 }
 
 function modalProductAdd() {
-
+  const splitedName = window.adminName.split(' ')
+  const adminNames = `${splitedName[0]} ${splitedName[1]}`;
+  
 
   fetch('/api/categories')
     .then(response => response.json())
@@ -73,11 +79,12 @@ function modalProductAdd() {
 
           });
           if (!brands.length) selectOptionsBrands += `<option value="">Sin marcas aún</option>`;
-
+          console.log(selectOptionsBrands);
           Swal.fire({
             title: "Nuevo producto",
             html: `
               <form id="product-form" action="/admin/products" method="POST" enctype="multipart/form-data">
+              <input type="hidden" name="adminName" value="${adminNames}" autocomplete="off">
               <input type="hidden" name="_token" value=${document.querySelector('meta[name="csrf-token"]').getAttribute('content')} autocomplete="off">
               <div class="form-floating">
               <label for="name" style="color: #fff;">Nombre</label>
@@ -85,7 +92,7 @@ function modalProductAdd() {
               </div>
               <div class="form-floating">
               <label for="brand" style="color: #fff;">Marca</label>
-              <select id="category_id" name="brand" class="swal2-input">
+              <select id="brand" name="brand" class="swal2-input">
               ${selectOptionsBrands}
               </select>
               </div>
@@ -193,13 +200,16 @@ function modalCategoryDel(categoryId, categoryName) {
 
 
 function deleteCategory(categoryId) {
-
+  const splitedName = window.adminName.split(' ')
+  const adminNames = `${splitedName[0]} ${splitedName[1]}`;
+  
   fetch(`/admin/categories/${categoryId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
       'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-    }
+    },
+    body: JSON.stringify({ adminName: adminNames })
   })
     .then(response => response.json())
     .then(data => {
@@ -233,11 +243,14 @@ function deleteCategory(categoryId) {
 
 
 function modalCategoryAdd() {
+  const splitedName = window.adminName.split(' ')
+  const adminNames = `${splitedName[0]} ${splitedName[1]}`;
 
   Swal.fire({
     title: "Nueva categoría",
     html: `
       <form id="product-form" action="/admin/categories" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="adminName" value="${adminNames}" autocomplete="off">
       <input type="hidden" name="_token" value=${document.querySelector('meta[name="csrf-token"]').getAttribute('content')} autocomplete="off">
       <div class="form-floating">
       <label for="name" style="color: #fff;">Nombre</label>
@@ -296,13 +309,16 @@ function modalBrandDel(brandId, brandName) {
 
 
 function deleteBrand(brandId) {
+  const splitedName = window.adminName.split(' ')
+  const adminNames = `${splitedName[0]} ${splitedName[1]}`;
 
   fetch(`/admin/brands/${brandId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
       'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-    }
+    },
+    body: JSON.stringify({ adminName: adminNames })
   })
     .then(response => response.json())
     .then(data => {
@@ -335,11 +351,14 @@ function deleteBrand(brandId) {
 
 
 function modalBrandAdd() {
+  const splitedName = window.adminName.split(' ')
+  const adminNames = `${splitedName[0]} ${splitedName[1]}`;
 
   Swal.fire({
     title: "Nueva marca",
     html: `
-      <form id="product-form" action="/admin/brands" method="POST">
+      <form id="product-form" action="/admin/brands" method="POST">\
+      <input type="hidden" name="adminName" value="${adminNames}" autocomplete="off">
       <input type="hidden" name="_token" value=${document.querySelector('meta[name="csrf-token"]').getAttribute('content')} autocomplete="off">
       <div class="form-floating">
       <label for="name" style="color: #fff;">Nombre</label>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Categories;
 use App\Models\Products;
+use App\Models\Logs; // Add this line to import the Logs class
 use App\Http\Requests\CategoryFormRequest;
 
 
@@ -21,15 +22,17 @@ class CategoriesController extends Controller
         return view('admin.categories.edit', compact('category'));
     }
 
-    public function destroy($categoryId)
+    public function destroy($categoryId, Request $request)
     {
-
+        $adminName = $request->input('adminName'); 
         $category = Categories::findOrFail($categoryId);
 
         $category->products()->delete();
     
         // Luego eliminar la categoría
         $category->delete();
+
+        Logs::create(['message' => 'Ha eliminado la categoría '.$category->name. ' con el ID: '.$category->id, 'action' => 'Eliminó', 'user' => $adminName]);
 
         return response()->json(['success' => true, 'message' => 'Categoría eliminada con exito.'], 200);
     }
@@ -43,6 +46,8 @@ class CategoriesController extends Controller
         $Category->description = $request->description;
         $Category->status = '0';
         $Category->save();
+
+        Logs::create(['message' => 'Ha agregado la categoría '.$Category->name. ' con el ID: '.$Category->id, 'action' => 'Agregó', 'user' => $request->adminName]);
   
         return redirect('/admin/categories')->with('message', 'Categoría agregada con éxito.');
                
@@ -55,7 +60,7 @@ class CategoriesController extends Controller
         $validatedData = $request->validated();
         
         $category = Categories::findOrFail($category_id);
-        
+        $oldName = $category->name;
             $category->update([
                 'name' => $validatedData['name'],
                 'description' => $validatedData['description'],
@@ -63,7 +68,7 @@ class CategoriesController extends Controller
             ]);
 
         
-        
+        Logs::create(['message' => 'Ha actualizado la categoría '.$oldName. ' con el ID: '.$category->id, 'action' => 'Actualizó', 'user' => $request->adminName]);
         return redirect('/admin/categories')->with('message', 'Categoría actualizada con éxito.');
         
     }

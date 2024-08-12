@@ -109,5 +109,10 @@
 
     @livewireScripts
     @stack('script')
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+       window.adminName = @json(Auth::user()->name);
+    });
+</script>
 </body>
 </html>

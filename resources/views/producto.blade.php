@@ -1,6 +1,7 @@
 @extends('template')
 
 @section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <section class="producto-show-section">
   <div class="my-cute-product-container">
     <div class="product-details-container">
@@ -15,10 +16,16 @@
         <p><strong>Marca: </strong>{{ $product->brand }}</p>
         <p><strong>Disponible(s): </strong>{{ $product->stock }}</p>
         @livewire('product-quantity', ['productId' => $product->id, 'productName' => $product->name, 'productPrice' => $product->price, 'productImage' => $product->image, 'productStock' => $product->stock, 'productDescription' => $product->description, 'productSlug' => $product->slug])
+        @csrf
       </div>
     </div>
   </div>
 </section>
+
+
+<script>
+     window.isAuthenticated = @json(Auth::check());
+</script>
 <script type="module" src="{{ asset('assets/js/cart.js') }}"></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {

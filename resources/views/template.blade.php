@@ -91,11 +91,15 @@
 						<div class="text-end">
 							@auth
 							<div class="user-dropdown">
-								<a href="#" class="user-button" style="--clr:#fff" >
+								
+								<a href="#" class="user-button" style="--clr:#fff">
 									<img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" class="user-avatar">
 									<span class="user-name">{{ Auth::user()->name }}</span>
 								</a>
 								<div class="dropdown-content">
+									@if(Auth::user()->role_as == 1)
+									<a href="{{ route('admin.dashboard') }}">Panel de administrador</a>
+									@endif
 									<a href="{{ route('profile.show') }}">Perfil</a>
 									<form method="POST" action="{{ route('logout') }}">
 										@csrf
@@ -108,9 +112,7 @@
 							<a href="{{ route('login') }}" style="--clr:#fff" class="login-btn"><span>Inicio sesión</span><i></i></a>
 							<a href="{{ route('register') }}" style="--clr:#ffcc1e" class="login-btn"><span>Registrarse</span><i></i></a>
 							@endauth
-							<!-- <button type="button" class="btn-login" onclick="window.location=`{{ route('login') }}`">Inicio sesión</button> -->
 
-							<!-- <button type="button" class="btn btn-warning" onclick="window.location=`{{ route('register') }}`">Registrarse</button> -->
 						</div>
 						<div>
 							<form class="d-flex">
@@ -422,7 +424,7 @@
 		const userButton = document.querySelector('.user-dropdown .user-button');
 		const dropdownContent = document.querySelector('.user-dropdown .dropdown-content');
 
-		userButton.addEventListener('click', function() {
+		userButton?.addEventListener('click', function() {
 			dropdownContent.classList.toggle('show');
 		});
 	</script>

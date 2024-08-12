@@ -21,15 +21,19 @@ SET time_zone = "+00:00";
 -- Database: `rimpsa`
 --
 
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `role_as`, `created_at`, `updated_at`) VALUES
+(10, 'Admin', 'rimpsa@admin.com', '$2y$12$TvaAvTEhAAWU9XbrCdIs5uAqmwN5m79FGTuldV58Wni91OwkNjENq', 1,  '2023-05-18 16:40:31', '2023-05-18 16:40:31');
+
+
 INSERT INTO `brands` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'CAT', 'a-long-slug', 1, '2023-05-18 16:40:31', '2023-05-18 16:40:31'),
-(2, 'CASE', 'a-short-slug', 1, '2023-05-18 16:45:32', '2023-05-18 16:45:32'),
-(3, 'JCB', 'a-random-slug', 1, '2023-05-18 19:05:07', '2023-05-18 19:05:07');
+(1, 'CAT', 'a-long-slug',  '2023-05-18 16:40:31', '2023-05-18 16:40:31'),
+(2, 'CASE', 'a-short-slug', '2023-05-18 16:45:32', '2023-05-18 16:45:32'),
+(3, 'JCB', 'a-random-slug', '2023-05-18 19:05:07', '2023-05-18 19:05:07');
 
 INSERT INTO `categories` (`id`, `name`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'CASE RETROEXCAVADORA', 'A short description', 1, '2023-05-18 16:40:31', '2023-05-18 16:40:31'),
-(2, 'RETROEXCAVADORA', 'A long description', 1, '2023-05-18 16:45:32', '2023-05-18 16:45:32'),
-(3, 'KIT DE SELLOS', 'A random description', 1, '2023-05-18 19:05:07', '2023-05-18 19:05:07');
+(1, 'CASE RETROEXCAVADORA', 'A short description', 0, '2023-05-18 16:40:31', '2023-05-18 16:40:31'),
+(2, 'RETROEXCAVADORA', 'A long description', 0, '2023-05-18 16:45:32', '2023-05-18 16:45:32'),
+(3, 'KIT DE SELLOS', 'A random description', 0, '2023-05-18 19:05:07', '2023-05-18 19:05:07');
 
 
 

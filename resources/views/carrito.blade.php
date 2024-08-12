@@ -7,7 +7,7 @@
     <div id="cart-items-container">
       <div id="empty-cart-message" style="display: none;">
         <h2 >No hay nada en el carrito</h2>
-        <img src="https://cdn.discordapp.com/attachments/753680258124742766/1270638252361125938/images.png?ex=66b46d96&is=66b31c16&hm=103f8124ddf9d8a385c9f38f423ae9e1e90c935f6f2cab66d0e7bc383365e057&" alt="">
+        <img src="{{asset('/assets/imgs/cart-empty.png')}}" alt="">
 
       </div>
     
@@ -48,12 +48,18 @@
           </tr>
         </tbody>
       </table>
-      <a href="{{ url('/checkout') }}"> Finalizar compra </a>
-      <!-- <button id="checkout-button" class="btn-finish-shopping" ><i class="fa fa-shopping-bag" aria-hidden="true"></i> &nbsp;&nbsp;Finalizar compra</button> -->
+      <!-- <a href="{{ url('/checkout') }}"> Finalizar compra </a> -->
+      <button id="checkout-button" class="btn-finish-shopping" ><i class="fa fa-shopping-bag" aria-hidden="true"></i> &nbsp;&nbsp;Finalizar compra</button>
     </div>
   </div>
 </section>
 
+
 <script type="module" src="{{ asset('assets/js/script.js') }}"></script>
+<script>
+  document.getElementById('checkout-button')?.addEventListener('click', function() {
+    window.location.href = "{{ route('checkout') }}";
+  });
+</script>
 
 @endsection

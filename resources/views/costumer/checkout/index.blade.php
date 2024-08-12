@@ -4,11 +4,10 @@
 
 @section('content')
 
-<section class="check-section-uwu" style="height:800px; width:100%">
+<section class="check-section-uwu">
 <livewire:costumers.checkout.checkout-view />
 </section>
 
-<script>
-    
-</script>
+
+<script type="module" src="{{ asset('assets/js/resizer.js') }}"></script>
 @endsection

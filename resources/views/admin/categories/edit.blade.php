@@ -24,7 +24,7 @@
                 <form action="{{ url('admin/categories/'.$category->id) }}" method="POST" enctype="multipart/form-data" style="background: #313338;  color: #fff;">
                 @csrf
                 @method('PUT')
-
+                <input type="hidden" name="adminName" value='{{Auth::user()->name}}' autocomplete="off">
                     <div class="card" style="background: #313338;  color: #fff;">
                         <div class="card-header color-dark fw-500" style="background: #313338;  color: #fff;">
                             Editar categoria

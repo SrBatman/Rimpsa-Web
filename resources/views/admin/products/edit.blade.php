@@ -32,6 +32,7 @@
                     
                     @method('PUT')
                     @csrf
+                    <input type="hidden" name="adminName" value='{{Auth::user()->name}}' autocomplete="off">
                     <div class="card" style="background: #313338;  color: #fff;">
                         <div class="card-header color-dark fw-500" style="background: #313338;  color: #fff;">
                             Inicio

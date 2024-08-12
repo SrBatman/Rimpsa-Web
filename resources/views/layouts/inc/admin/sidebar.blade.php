@@ -50,12 +50,18 @@
                         </li>
 
                         <li>
-                            <a href="{{ url('admin/logs') }}" class="{{ Request::is('admin/logs') ? 'active':'' }}">
+                            <a href="{{ url('admin/messages') }}" class="{{ Request::is('admin/messages') ? 'active':'' }}">
                                 <span data-feather="mail" class="nav-icon"></span>
                                 <span class="menu-text" style="color: #fff;">Mensajes</span>
                             </a>
                         </li>
 
+                        <li>
+                            <a href="{{ url('admin/monitoring') }}" class="{{ Request::is('admin/monitoring') ? 'active':'' }}">
+                                <span data-feather="thermometer" class="nav-icon"></span>
+                                <span class="menu-text" style="color: #fff;">Monitoreo almacén</span>
+                            </a>
+                        </li>
 
                         <li class="has-child">
                             <a href="#" class="{{ Request::is('admin/buys*') ? 'active':'' }}">

@@ -1,16 +1,10 @@
-@extends('layouts.admin')
-
-@section('title', 'Rimpsa - Registro de auditoria')
-
-@section('content')
-
-    <div class="contents" style="background: #313338; color: #fff;">
+<div class="contents" style="background: #313338; color: #fff;">
         <div class="container-fluid">
             <div class="row ">
                 <div class="col-lg-12">
 
                     <div class="breadcrumb-main">
-                        <h4 class="text-capitalize breadcrumb-title" style=" color: #fff;">Registros de auditoria</h4>
+                        <h4 class="text-capitalize breadcrumb-title" style=" color: #fff;"></h4>
 
                         <form action="" method="GET">
                             <div class="breadcrumb-action justify-content-center flex-wrap">
@@ -31,7 +25,7 @@
                 <div class="col-lg-12 mb-30" style="background: #313338;  color: #fff;">
                     <div class="card" style="background: #313338;  color: #fff;">
                         <div class="card-header color-dark fw-500" style="background: #313338;  color: #fff;">
-                            Registros de auditoria
+                            Monitoreo almacén
                         </div>
                         <div class="card-body" style="background: #313338;  color: #fff;">
 
@@ -41,10 +35,9 @@
                                         <thead style="background: #313338;  color: #fff;">
                                             <tr class="userDatatable-header" style="background: #313338;  color: #fff;">
                                                 <th style="background: #313338;  color: #fff;"><span class="userDatatable-title"  style="color:#fff;"> ID</span></th>
-                                                <th style="background: #313338;  color: #fff;"><span class="userDatatable-title" style="color:#fff;">Acción</span></th>
-                                                <th style="background: #313338;  color: #fff;"><span class="userDatatable-title" style="color:#fff;">Administrador</span></th>
-                                                <th style="background: #313338;  color: #fff;"><span class="userDatatable-title" style="color:#fff;">Mensaje</span></th>
-                                                <th style="background: #313338;  color: #fff;"><span class="userDatatable-title" style="color:#fff;">Fecha</span></th>
+                                                <th style="background: #313338;  color: #fff;"><span class="userDatatable-title" style="color:#fff;">Temperatura</span></th>
+                                                <th style="background: #313338;  color: #fff;"><span class="userDatatable-title" style="color:#fff;">Humedad</span></th>
+                                                <th style="background: #313338;  color: #fff;"><span class="userDatatable-title" style="color:#fff;">Fecha-Hora</span></th>
                                                 
                                                 <!-- <th style="background: #313338;  color: #fff;"><span class="userDatatable-title" style="color:#fff;">Fecha de pedido </span></th>
                                                 <th style="background: #313338;  color: #fff;"><span class="userDatatable-title" style="color:#fff;">Mensaje de estado</span></th>
@@ -52,18 +45,17 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @forelse ($logs as $log)
+                                            @forelse ($storageLogs as $log)
                                                 <tr>
                                                     <td><div class="userDatatable-content" style="color:#fff;">{{ $log->id }}</div></td>
-                                                    <td><div class="userDatatable-content" style="color:#fff;">{{ $log->action }}</div></td>
-                                                    <td><div class="userDatatable-content" style="color:#fff;">{{ $log->user }}</div></td>
-                                                    <td><div class="userDatatable-content" style="color:#fff;  text-transform: none;">{{ $log->message }}</div></td>
-                                                    <td><div class="userDatatable-content" style="color:#fff;">{{ $log->created_at->format('d-m-Y') }}</div></td>
+                                                    <td><div class="userDatatable-content" style="color:#fff;">{{ $log->temperatura }}</div></td>
+                                                    <td><div class="userDatatable-content" style="color:#fff;">{{ $log->humedad }}</div></td>
+                                                    <td><div class="userDatatable-content" style="color:#fff;">{{ $log->created_at->format('d-m-Y H:i') }}</div></td>
                                                 
                                                 </tr>
                                             @empty
                                                 <tr>
-                                                    <td colspan="7">No hay registros de auditoria
+                                                    <td colspan="7">No hay registros del almacén
                                                     </td>
                                                 </tr>
                                             @endforelse
@@ -78,4 +70,3 @@
             </div>
         </div>
     </div>
-@endsection

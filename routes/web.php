@@ -68,6 +68,11 @@ Route::prefix('admin')->middleware(['auth', AdminMiddleware::class])->group(func
     });
 
 
+    Route::controller(App\Http\Controllers\Admin\StoragesController::class)->group(function () {
+        Route::get('/monitoring', 'index');
+    });
+
+
     //Rutas de ordenes
     Route::controller(App\Http\Controllers\Admin\OrdersController::class)->group(function () {
         Route::get('/orders', 'index');
@@ -89,7 +94,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('checkout', [App\Http\Controllers\CheckoutController::class, 'index']);
+    // Route::post('/cart', [App\Http\Controllers\CartController::class, 'store']);
+
+    Route::get('/checkout', [App\Http\Controllers\CheckoutController::class, 'index'])->name('checkout');
 });
 
 // Twitter Login
@@ -101,4 +108,4 @@ Route::get('/auth/facebook', [LoginController::class, 'redirectToFacebook'])->na
 Route::get('/auth/facebook/callback', [LoginController::class, 'handleFacebookCallback']);
 
 //Agregar al carrito
-Route::post('/cart', [App\Http\Controllers\CartController::class, 'store']);
+// Route::post('/cart', [App\Http\Controllers\CartController::class, 'store']);

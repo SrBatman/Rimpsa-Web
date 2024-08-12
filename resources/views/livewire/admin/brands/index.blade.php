@@ -17,7 +17,7 @@
                 <!-- CODE HERE -->
                 <div class="col-lg-12 mb-30">
                     @if (session('message'))
-                        <div class="alert alert-success mb-3">{{ session('message') }}</div>
+                        <div class="alert alert-success mb-3" style="color: #056800">{{ session('message') }}</div>
                     @endif
                     <div class="card">
                         <div class="card-header color-dark fw-500" style="background: #313338;  color: #fff;">
@@ -45,7 +45,7 @@
                                                                 <button type="button" wire:click="editBrand({{ $brand->id }})" class="btn btn-primary btn-outline-lighten__height mr-2" data-toggle="modal" data-target="#updateBrandModal">Editar</button>
                                                             </li> --}}
                                                             <li>
-                                                                <button type="button" onclick="deleteBrand('{{ $brand->id }}', '{{ $brand->name }}')" class="btn btn-danger btn-outline-lighten__height" data-toggle="modal" data-target="#deleteBrandModal">Eliminar</button>
+                                                                <button type="button" onclick="modalBrandDel('{{ $brand->id }}', '{{ $brand->name }}')" class="btn btn-danger btn-outline-lighten__height" data-toggle="modal" data-target="#deleteBrandModal">Eliminar</button>
                                                             </li>
                                                         </ul>
                                                     </td>
