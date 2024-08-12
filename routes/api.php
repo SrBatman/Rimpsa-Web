@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\APIcontroller;
 use App\Http\Controllers\Admin\StoragesController;
+
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -14,6 +16,8 @@ Route::get('/user', function (Request $request) {
 //     Route::put('/cart/{id}', [CartController::class, 'update']);
 //     Route::delete('/cart/{id}', [CartController::class, 'destroy']);
 // });
+
+Route::get('/login', [APIcontroller::class, 'login']);
 
 Route::post('/storages', [StoragesController::class, 'store']);
 
