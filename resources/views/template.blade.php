@@ -110,7 +110,7 @@
 							</div>
 							<!-- <a href="{{ route('login') }}" style="--clr:#fff" class="login-btn"><span>Inicio sesión</span><i></i></a> -->
 							@else
-							<a href="{{ route('login') }}" style="--clr:#fff" class="login-btn"><span>Inicio sesión</span><i></i></a>
+							<a href="{{ route('login') }}" style="--clr:#fff" class="login-btn"><span>Iniciar sesion</span><i></i></a>
 							<a href="{{ route('register') }}" style="--clr:#ffcc1e" class="login-btn"><span>Registrarse</span><i></i></a>
 							@endauth
 
@@ -181,7 +181,8 @@
 						<a href="{{route('carrito')}}">
 							<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 							<div class="space-between-this-shits"></div>
-							<h2 class="cart-quantity-template" id="cart-quantity-template">Carrito (0)</h2>
+							{{-- collect(session('cart'))->sum('quantity') --}}
+							<h2 class="cart-quantity-template" id="cart-quantity-template">Carrito ({{ session('cart') ? count(session('cart')) : 0 }})</h2>
 						</a>
 					</div>
 					<a href="{{route('contacto')}}">
@@ -203,7 +204,7 @@
 						<h2>REFACCIONES PARA MAQUINARIA AGRÍCOLA, INDUSTRIAL, MINERA Y MUCHO MÁS...</h2>
 					</div>
 					<div class="small-text">
-						En RIMPSA trabajamos para satisfacer los requerimientos de nuestros clientes
+						En RIMPSA trabajamos para satisfacer los requerimientos de nuestros clientes.
 					</div>
 
 				</div>
@@ -419,7 +420,7 @@
 		});
 	</script>
 
-	<script type="module" src="{{ asset('assets/js/template.js') }}"></script>
+
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 	<script>
 		const userButton = document.querySelector('.user-dropdown .user-button');

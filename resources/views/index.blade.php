@@ -15,7 +15,7 @@
                 </div>
                 <div class="quality-text">
                     <h2>
-                        ALTA CALIDAD Y TECNOLOGÍA DE VANGUARDIA
+                        ALTA CALIDAD Y TECNOLOGIA DE VANGUARDIA
                     </h2>
                 </div>
             </div>
@@ -45,7 +45,7 @@
         <div class="yellow-text-container">
             <div class="yellow-first-text">
                 <h2>
-                    ESPECIALISTAS EN <b>EJES DELANTEROS</b> DOBLE TRACCIÓN.
+                    ESPECIALISTAS EN <b>EJES DELANTEROS</b> DE DOBLE TRACCIÓN.
                 </h2>
 
             </div>
@@ -79,7 +79,7 @@
                     </div>
                     <div class="last-quality-text">
                         <p>
-                            Nuestros valores y principios reflejan la empresa que aspiramos ser ya que estos son el fundamento de las decisiones de nuestro negocio. Es por ello que nuestra empresa a nivel global, se rige por lo mas altos estándares.
+                            Nuestros valores y principios reflejan la empresa que aspiramos ser, ya que estos son el fundamento de las decisiones de nuestro negocio. Es por ello que, nuestra empresa a nivel global, se rige por lo mas altos estándares.
                         </p>
                     </div>
                 </div>
@@ -253,7 +253,7 @@
                     <img src="{{ asset('assets/imgs/main/bomba.webp') }}" height="200px" width="300px" alt="imagen2">
                 </div>
                 <div class="btn-hydraulic-black">
-                    <span>SISTEMA HIDRÁULICO</span>
+                    <span>SISTEMA HIDRAULICO</span>
                 </div>
             </div>
             <div class="hidden-content">
@@ -271,7 +271,7 @@
                 </div>
                 <div class="red-filters-btn-box">
                     <div class="red-box-tools">
-                    <span class="elementor-button-text">LA FUNCIÓN DEL SISTEMA HIDRÁULICO ES INCREMENTAR LA FUERZA DE LA MAQUINA</span>
+                    <span class="elementor-button-text">LA FUNCION DEL SISTEMA HIDRAULICO ES INCREMENTAR LA FUERZA DE LA MAQUINA</span>
                     </div>
                
                 </div>
@@ -288,7 +288,7 @@
        <div class="sixth-box-inside">
         
        <div class="title-why-container">
-            <h2>¿PORQUE COMPRAR EN RIMPSA? </h2>
+            <h2>¿POR QUE COMPRAR EN RIMPSA? </h2>
 
         </div>
         <div class="text-reason-container">
@@ -332,7 +332,7 @@
                 <li><i class="bi bi-check-circle-fill"></i> Satisfacción total del cliente garantizado </li>
                 <li><i class="bi bi-check-circle-fill"></i> Envíos urgentes a cualquier parte </li>
                 <li><i class="bi bi-check-circle-fill"></i> Asesoría en cuanto a la paquetería para que el flete de sus envíos sea a bajos costos </li>
-                <li><i class="bi bi-check-circle-fill"></i> Servicio preventa, pos venta</li>
+                <li><i class="bi bi-check-circle-fill"></i> Servicio preventa, posventa</li>
                 
             </ul>
         </div>

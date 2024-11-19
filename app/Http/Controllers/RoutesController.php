@@ -21,6 +21,7 @@ class RoutesController extends Controller
     }
 
     public function carrito(){
+        
         return view('carrito');
     }
 

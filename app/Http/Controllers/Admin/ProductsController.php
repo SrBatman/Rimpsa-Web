@@ -52,7 +52,7 @@ class ProductsController extends Controller
         
 
             $request->file('image')->move($uploadPath, $fileName);
-            $Product->image = "http://192.168.100.2:8000/".$uploadPath.$fileName;
+            $Product->image = "http://localhost:8000/".$uploadPath.$fileName;
             $Product->save();
         
             Logs::create(['message' => 'Ha agregado el producto '.$Product->name. ' con el ID: '.$Product->id, 'action' => 'Agregó', 'user' => $request->adminName]);

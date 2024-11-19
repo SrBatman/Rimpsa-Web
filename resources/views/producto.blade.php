@@ -22,11 +22,8 @@
   </div>
 </section>
 
-
-<script>
-     window.isAuthenticated = @json(Auth::check());
-</script>
 <script type="module" src="{{ asset('assets/js/cart.js') }}"></script>
+
 <script>
   document.addEventListener('DOMContentLoaded', () => {
   const img = document.getElementById('product-image');
