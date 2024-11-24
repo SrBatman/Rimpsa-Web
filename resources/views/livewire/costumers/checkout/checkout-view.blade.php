@@ -1,16 +1,15 @@
 <div>
     <div class="py-3 py-md-4 checkout">
         <div class="container-for-checkout" style="width: 60%;">
+            @if(!empty($cart))
             <h4>Proceder al pago</h4>
             <hr>
-
-            @if($this->totalProductAmount != '0')
             <div class="row">
                 <div class="col-md-12 mb-4">
                     <div class="shadow bg-white p-3">
                         <h4 class="text-primary" style="color: #342665 !important;">
                             Precio Total :
-                            <span class="float-end">${{ number_format($this->totalProductAmount, 2) }}</span>
+                            <span class="float-end">${{ number_format($this->total, 2) }}</span>
                         </h4>
                         <hr>
                         <!-- <small>* Tu pedido llegara en 3 a 5 dias.</small>
@@ -120,7 +119,7 @@
         },
 
         createOrder: (data, actions) => {
-            let totalInPesos = parseFloat('{{ $this->totalProductAmount }}');
+            let totalInPesos = parseFloat('{{ $this->total }}');
 
             // Convertir de pesos mexicanos a dólares
             let conversionRate = 19; // 1 USD = 19 MXN

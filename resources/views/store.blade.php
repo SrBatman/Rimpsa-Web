@@ -12,12 +12,11 @@
                     @foreach($categoriesList as $category)
                     <li class="category-name">
                         <a href="{{ route('tienda', ['category' => $category->id] + request()->except('page')) }}">{{ $category->name }}</a>
-                        @if($category->name !== 'RETROEXCAVADORA')
+                        @if($category->name !== 'Sin categorizar')
                         <ul>
-                            <li class="subcategory-name">EJE</li>
-                            <li class="subcategory-name">HIDRÁULICO</li>
-                            <li class="subcategory-name">KIT DE SELLOS</li>
-                            {!! $category->name === 'CASE RETROEXCAVADORA' ? '<li class="subcategory-name">TRANSMISION</li>' : '<li class="subcategory-name">FRENOS</li>' !!}
+                            @foreach ($category->subcategories as $subcategorie)
+                            <li class="subcategory-name">{{ $subcategorie->name }}</li>
+                            @endforeach
 
                         </ul>
                         @endif

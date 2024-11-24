@@ -142,7 +142,7 @@
                                     </tbody>
                                 </table>
                                 <div class="mt-3 float-right">
-                                    {{ $products->links() }}
+                                    {{-- {{ $products->links() }} --}}
                                 </div>
                             </div>
                         </div>

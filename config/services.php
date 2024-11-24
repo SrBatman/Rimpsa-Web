@@ -14,6 +14,10 @@ return [
     |
     */
 
+    'api' => [
+        'url' => env('API_URL'),
+    ],
+
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],
@@ -22,6 +26,11 @@ return [
         'key' => env('AWS_ACCESS_KEY_ID'),
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+    ],
+    
+    'cipher' => [
+        'key' => env('CIPHER_SECRET_KEY'),
+        'iv' => env('CIPHER_IV'),
     ],
 
     'resend' => [

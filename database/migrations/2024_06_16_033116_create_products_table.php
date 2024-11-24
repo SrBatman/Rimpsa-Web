@@ -19,6 +19,15 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('subcategories', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->text('description');
+            $table->boolean('status');
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+            $table->timestamps();
+        });
+
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -29,7 +38,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->boolean('status');
             $table->integer('stock');
-            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->foreignId('subcategory_id')->constrained('subcategories')->onDelete('cascade');
             $table->timestamps();
         });
 
@@ -49,8 +58,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('product_movements');
+        Schema::dropIfExists('subcategories');
         Schema::dropIfExists('products');
         Schema::dropIfExists('categories');
+    
        
         
     }

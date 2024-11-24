@@ -449,7 +449,9 @@
 .btn-notifyme {
   width: 16%;
   border-color: black;
-  border: 2px solid black;
+  border: 1px solid black;
+  position: relative;
+  top: 0px;
   /* border-radius: 1rem; */
   background-color: rgba(121, 19, 19, 0.966);
   height: 40px;

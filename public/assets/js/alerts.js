@@ -1,4 +1,4 @@
-
+/*  Products */
 
 function modalProductDel(productId, productName) {
   Swal.fire({
@@ -58,79 +58,89 @@ function deleteProduct(productId) {
     });
 }
 
+
+
 function modalProductAdd() {
-  const splitedName = window.adminName.split(' ')
+  const splitedName = window.adminName.split(' ');
   const adminNames = `${splitedName[0]} ${splitedName[1]}`;
-  
 
   fetch('/api/categories')
     .then(response => response.json())
     .then(categories => {
-      // Construir el HTML del <select> con las categorías
       let selectOptions = '';
       categories.forEach(category => {
         selectOptions += `<option value="${category.id}">${category.name}</option>`;
       });
 
-      fetch('/api/brands').then(res => res.json()).then(brands => {
-        let selectOptionsBrands = '';
-        brands.forEach((brand) => {
-          selectOptionsBrands += `<option value="${brand.name}">${brand.name}</option>`;
-
+      fetch('/api/brands')
+        .then(res => res.json())
+        .then(brands => {
+          let selectOptionsBrands = '';
+          console.log(brands)
+          brands.forEach(brand => {
+            selectOptionsBrands += `<option value="${brand.name}">${brand.name}</option>`;
           });
-          if (!brands.length) selectOptionsBrands += `<option value="">Sin marcas aún</option>`;
-          console.log(selectOptionsBrands);
+          if (!brands.length)
+            selectOptionsBrands += `<option value="">Sin proveedores aún</option>`;
+
           Swal.fire({
             title: "Nuevo producto",
             html: `
               <form id="product-form" action="/admin/products" method="POST" enctype="multipart/form-data">
-              <input type="hidden" name="adminName" value="${adminNames}" autocomplete="off">
-              <input type="hidden" name="_token" value=${document.querySelector('meta[name="csrf-token"]').getAttribute('content')} autocomplete="off">
-              <div class="form-floating">
-              <label for="name" style="color: #fff;">Nombre</label>
-              <input id="name" name="name" class="swal2-input">
-              </div>
-              <div class="form-floating">
-              <label for="brand" style="color: #fff;">Marca</label>
-              <select id="brand" name="brand" class="swal2-input">
-              ${selectOptionsBrands}
-              </select>
-              </div>
-              <div class="form-floating">
-              <label for="category" style="color: #fff;">Categoría</label>
-              <select id="category_id" name="category_id" class="swal2-input">
-              ${selectOptions}
-              </select>
-              </div>
-              <div class="form-floating">
-              <label for="description" style="color: #fff;">Descripción</label>
-              <input id="description" name="description" class="swal2-input">
-              </div>
-              <div class="form-floating">
-              <label for="price" style="color: #fff;">Precio</label>
-              <input id="price" name="price" class="swal2-input">
-              </div>
-              <div class="form-floating">
-              <label for="stock" style="color: #fff;">Cantidad</label>
-               <div>
-              <input id="stock" type="number" name="stock" class="swal2-input" style="width: 372px !important;">
-               </div>
-              </div>
-              <div class="form-floating">
-              <label for="image" style="color: #fff;">Imagen</label>
-              <div>
-              <!-- Botón personalizado -->
-              <button type="button" class="btn btn-primary" onclick="document.getElementById('image').click();">
-                  Seleccionar Imagen
-              </button>
-              <input type="file" id="image" name="image" class="custom-file-input">
-              <span id="file-name" style="color: #fff;">No se ha seleccionado ningún archivo</span>
-              </div>
-              </div>
+                <input type="hidden" name="adminName" value="${adminNames}" autocomplete="off">
+                <input type="hidden" name="_token" value=${document.querySelector('meta[name="csrf-token"]').getAttribute('content')} autocomplete="off">
+                <div class="form-floating">
+                  <label for="name" style="color: #fff;">Nombre</label>
+                  <input id="name" name="name" class="swal2-input">
+                </div>
+                <div class="form-floating">
+                  <label for="brand" style="color: #fff;">Proveedor</label>
+                  <select id="brand" name="brand" class="swal2-input">
+                   <option value="" disabled selected>Selecciona un proveedor</option>
+                    ${selectOptionsBrands}
+                  </select>
+                </div>
+                <div class="form-floating">
+                  <label for="category" style="color: #fff;">Categoría</label>
+                  <select id="category_id" name="category_id" class="swal2-input">
+                    <option value="" disabled selected>Selecciona una categoría</option>
+                    ${selectOptions}
+                  </select>
+                </div>
+                <div class="form-floating">
+                  <label for="subcategory" style="color: #fff;">Subcategoría</label>
+                  <select id="subcategory_id" name="subcategory_id" class="swal2-input">
+                    <option value="">Selecciona una categoría primero</option>
+                  </select>
+                </div>
+                <div class="form-floating">
+                  <label for="description" style="color: #fff;">Descripción</label>
+                  <input id="description" name="description" class="swal2-input">
+                </div>
+                <div class="form-floating">
+                  <label for="price" style="color: #fff;">Precio</label>
+                  <input id="price" name="price" class="swal2-input">
+                </div>
+                <div class="form-floating">
+                  <label for="stock" style="color: #fff;">Cantidad</label>
+                  <div>
+                    <input id="stock" type="number" name="stock" class="swal2-input" style="width: 372px !important;">
+                  </div>
+                </div>
+                <div class="form-floating">
+                  <label for="image" style="color: #fff;">Imagen</label>
+                  <div>
+                    <button type="button" class="btn btn-primary" onclick="document.getElementById('image').click();">
+                      Seleccionar Imagen
+                    </button>
+                    <input type="file" id="image" name="image" class="custom-file-input">
+                    <span id="file-name" style="color: #fff;">No se ha seleccionado ningún archivo</span>
+                  </div>
+                </div>
               </form>
             `,
             customClass: {
-              popup: 'custom-swal-popup'
+              popup: 'custom-swal-popup',
             },
             showCancelButton: true,
             confirmButtonColor: '#2a913a',
@@ -146,8 +156,7 @@ function modalProductAdd() {
               const price = form.querySelector('#price').value.trim();
               const stock = form.querySelector('#stock').value.trim();
               const image = form.querySelector('#image').files.length;
-    
-              // Validaciones personalizadas
+
               if (!name || !brand || !category_id || !description || !price || !stock || !image) {
                 Swal.showValidationMessage('Todos los campos son obligatorios.');
                 return false;
@@ -160,26 +169,54 @@ function modalProductAdd() {
                 Swal.showValidationMessage('La cantidad debe ser un número entero positivo.');
                 return false;
               }
-    
-              // Si todo está bien, se envía el formulario
+
               return form.submit();
-            }
+            },
           });
-    
-          document.getElementById('image').addEventListener('change', function() {
-            
-            let fileName = this.files[0] ? this.files[0].name : 'No se ha seleccionado ningún archivo';
+
+          document.getElementById('image').addEventListener('change', function () {
+            let fileName = this.files[0]
+              ? this.files[0].name
+              : 'No se ha seleccionado ningún archivo';
             document.getElementById('file-name').textContent = fileName;
+          });
+
+          document
+            .getElementById('category_id')
+            .addEventListener('change', function () {
+              const categoryId = this.value;
+              const subcategorySelect =
+                document.getElementById('subcategory_id');
+
+              // Limpiar subcategorías anteriores
+              subcategorySelect.innerHTML = '<option value="">Cargando...</option>';
+
+              // Solicitar subcategorías
+              fetch(`/api/subcategories/${categoryId}`)
+                .then(response => response.json())
+                .then(subcategories => {
+                  let subcategoryOptions = '';
+                  subcategories.forEach(subcategory => {
+                    subcategoryOptions += `<option value="${subcategory.id}">${subcategory.name}</option>`;
+                  });
+
+                  if (!subcategories.length) {
+                    subcategoryOptions += `<option value="">No hay subcategorías</option>`;
+                  }
+
+                  subcategorySelect.innerHTML = subcategoryOptions;
+                })
+                .catch((err) => {
+                  console.error(err);
+                  subcategorySelect.innerHTML = '<option value="">Error al cargar subcategorías</option>';
+                });
+            });
         });
-    
-
-      })
-
-      
-    });   // Fin del fetch de categorías
-
+    });
 }
 
+
+/*  Categorys */
 
 function modalCategoryDel(categoryId, categoryName) {
   Swal.fire({
@@ -290,11 +327,13 @@ function modalCategoryAdd() {
 
 }
 
+/*  Brands */
+
 
 function modalBrandDel(brandId, brandName) {
   Swal.fire({
     title: '¿Estás seguro?',
-    html: `<div>Estas a punto de eliminar la marca:<br>\n${brandName}.</div>`,
+    html: `<div>Estas a punto de eliminar un proveedor:<br>\n${brandName}.</div>`,
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
@@ -322,11 +361,11 @@ function deleteBrand(brandId) {
   })
     .then(response => response.json())
     .then(data => {
-      
+      console.log(data)
       if (data.success) {
         Swal.fire(
           '¡Eliminado!',
-          'Marca eliminada con exito.',
+          'Proovedor eliminado con exito.',
           'success'
         ).then(() => {
           // Optionally, reload the page or remove the product from the UI
@@ -355,7 +394,7 @@ function modalBrandAdd() {
   const adminNames = `${splitedName[0]} ${splitedName[1]}`;
 
   Swal.fire({
-    title: "Nueva marca",
+    title: "Nuevo proveedor",
     html: `
       <form id="product-form" action="/admin/brands" method="POST">\
       <input type="hidden" name="adminName" value="${adminNames}" autocomplete="off">
@@ -363,6 +402,10 @@ function modalBrandAdd() {
       <div class="form-floating">
       <label for="name" style="color: #fff;">Nombre</label>
       <input id="name" name="name" class="swal2-input">
+      </div>
+      <div class="form-floating">
+      <label for="name" style="color: #fff;">Contacto</label>
+      <input id="contact" name="contact" class="swal2-input">
       </div>
       </form>
     `,
@@ -377,9 +420,10 @@ function modalBrandAdd() {
     preConfirm: () => {
       const form = document.getElementById('product-form');
       const name = form.querySelector('#name').value.trim();
+      const contact = form.querySelector('#contact').value.trim();
 
       // Validaciones personalizadas
-      if (!name ) {
+      if (!name || !contact) {
         Swal.showValidationMessage('Todos los campos son obligatorios.');
         return false;
       }
@@ -391,6 +435,9 @@ function modalBrandAdd() {
 
 }
 
+
+
+/*  Users */
 
 
 function modalUserDel(userId, userName) {

@@ -11,7 +11,7 @@
         <div class="navbar-left">
             <a href="" class="sidebar-toggle">
                 <img class="svg" src="{{ asset('admin/img/svg/bars.svg') }}" alt="img"></a>
-            <a class="navbar-brand" href="#"><img class="dark w" src="{{ asset('assets/imgs/logo_blanco_01.png') }}" alt="svg"><img class="light" src="{{ asset('admin/img/logo_white.png') }}" alt="img"></a>
+            <a class="navbar-brand" href="{{ url('admin/dashboard') }}"><img class="dark w" src="{{ asset('assets/imgs/logo_blanco_01.png') }}" alt="svg"><img class="light" src="{{ asset('admin/img/logo_white.png') }}" alt="img"></a>
            
             <form action="/" class="search-form">
                 <!-- <span data-feather="search"></span>

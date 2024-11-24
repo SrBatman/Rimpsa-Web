@@ -20,6 +20,28 @@ class CheckoutView extends Component
         'validationForAll',
         'transactionEmit' => 'paidOnlineOrder'
     ];
+    public $cart = [];
+    public $subtotal = 0;
+    public $shipping = 230; // Este es un costo fijo de ejemplo, cámbialo según la lógica de tu aplicación.
+    public $total = 0;
+
+    // Método para cargar el carrito desde la sesión
+    public function mount()
+    {
+        $this->cart = session()->get('cart', []);
+        $this->calculateTotal();
+    }
+
+    public function calculateTotal()
+    {
+        $this->subtotal = 0;
+        foreach ($this->cart as $product) {
+            $this->subtotal += $product['price'] * $product['quantity'];
+        }
+
+        // Calculamos el total
+        $this->total = $this->subtotal + $this->shipping;
+    }
 
     public function rules(){
         return [
@@ -37,8 +59,10 @@ class CheckoutView extends Component
 
         $onlineOrder = $this->placeOrder();
         if ($onlineOrder){
-            Carts::where('user_id', auth()->user()->id)->delete();
-
+            // Carts::where('user_id', auth()->user()->id)->delete();
+            //Limpiamos el carrito
+            session()->forget('cart');
+            
             try{
                 $order = Orders::findOrFail($onlineOrder->id);
                 Mail::to("$order->email")->send(new PlaceOrderMailable($order));
@@ -154,8 +178,6 @@ class CheckoutView extends Component
         }
 
         $this->totalProductAmount = $this->totalProductAmount();
-        return view('livewire.costumers.checkout.checkout-view', [
-            'totalProductAmount' => $this->totalProductAmount
-        ]);
+        return view('livewire.costumers.checkout.checkout-view');
     }
 }

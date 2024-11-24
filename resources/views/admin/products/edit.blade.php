@@ -47,23 +47,39 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleFormControlSelect1" class="il-gray fs-14 fw-500 align-center" style="color: #fff;">Categoría</label>
-                                <select class="form-control px-15" name="category_id">
+                                <label for="category_id" class="il-gray fs-14 fw-500 align-center" style="color: #fff;">Categoría</label>
+                                <select class="form-control px-15" name="category_id" id="category_id">
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}" {{ $category->id == $product->category_id ? 'Selected':'' }}>{{ $category->name }}</option>
+                                        <option value="{{ $category->id }}" {{ $category->id == $product->category_id ? 'selected' : '' }}>
+                                            {{ $category->name }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 @error('category_id')<small class="text-danger">{{$message}}</small> @enderror
                             </div>
+                            
+                            <div class="form-group">
+                                <label for="subcategory_id" class="il-gray fs-14 fw-500 align-center" style="color: #fff;">Subcategoría</label>
+                                <select class="form-control px-15" name="subcategory_id" id="subcategory_id">
+                                    @foreach ($subcategories as $subcategory)
+                                        <option value="{{ $subcategory->id }}" {{ $subcategory->id == $product->subcategory_id ? 'selected' : '' }}>
+                                            {{ $subcategory->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('subcategory_id')<small class="text-danger">{{$message}}</small> @enderror
+                            </div>
+
+
 
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1" class="il-gray fs-14 fw-500 align-center" style="color: #fff;">Proveedor</label>
-                                {{--<select class="form-control px-15" name="brand">
+                                <select class="form-control px-15" name="brand">
                                      @foreach ($brands as $brand)
-                                        <option value="{{ $brand->name }}" {{ $brand->name == $product->brand ? 'Selected':'' }}>{{ $brand->name }}</option>
+                                        <option value="{{ $brand->name }}" {{ $brand->name == $product->brand ? 'selected':'' }}>{{ $brand->name }}</option>
                                     @endforeach 
-                                </select>--}}
-                                <input type="text" name="brand" value="{{ $product->brand }}" class="form-control ih-medium ip-light radius-xs b-light px-15" id="a10">
+                                </select>
+                                {{-- <input type="text" name="brand" value="{{ $product->brand }}" class="form-control ih-medium ip-light radius-xs b-light px-15" id="a10"> --}}
                                 @error('brand')<small class="text-danger">{{$message}}</small> @enderror
                             </div>
 
@@ -150,5 +166,26 @@
         </div>
     </div>
 </div>
+<script>
+    const allSubcategories = @json($allSubcategories);
 
+    document.getElementById('category_id').addEventListener('change', function () {
+        const categoryId = this.value;
+        const subcategorySelect = document.getElementById('subcategory_id');
+
+        // Filtra las subcategorías relacionadas con la categoría seleccionada.
+        const filteredSubcategories = allSubcategories.filter(subcategory => subcategory.category_id == categoryId);
+
+        // Limpia el menú de subcategorías.
+        subcategorySelect.innerHTML = '';
+
+        // Agrega las opciones correspondientes.
+        filteredSubcategories.forEach(subcategory => {
+            const option = document.createElement('option');
+            option.value = subcategory.id;
+            option.textContent = subcategory.name;
+            subcategorySelect.appendChild(option);
+        });
+    });
+</script>
 @endsection

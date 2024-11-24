@@ -3,17 +3,15 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Http\Exceptions\HttpResponseException;
 
-class BrandFormRequest extends FormRequest
+class SubcategoriesFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,8 +22,7 @@ class BrandFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max:250',
-            'contact' => 'required|max:250',
+            //
         ];
     }
 }

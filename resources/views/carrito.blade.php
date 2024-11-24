@@ -4,6 +4,7 @@
 
 <section id="space-section" class="carrito-section">
   @livewire('costumers.cart.cart-view')
+  
 </section>
 
 

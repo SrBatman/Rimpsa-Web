@@ -26,23 +26,40 @@ class RoutesController extends Controller
     }
 
 
-    public function store(Request $request) {
-
-        $query = Products::query();
+    public function store(Request $request)
+    {
+        // Inicializar la consulta con los productos que tienen un status activo
+        $query = Products::where('status', '0') // Solo productos activos
+            ->whereHas('subcategory', function ($query) {
+                $query->where('status', '0') // Solo subcategorías activas
+                    ->whereHas('category', function ($query) {
+                        $query->where('status', '0'); // Solo categorías activas
+                    });
+            });
     
+        // Filtrar por búsqueda
         if ($request->has('search') && $request->input('search') !== null) {
             $query->where('name', 'like', '%' . $request->input('search') . '%');
         }
     
+        // Filtrar por categoría
         if ($request->has('category') && $request->input('category') !== null) {
-            $query->where('category_id', $request->input('category'));
+            $query->whereHas('subcategory', function ($query) use ($request) {
+                $query->where('category_id', $request->input('category'));
+            });
         }
-
+    
+        // Filtrar por subcategoría
+        if ($request->has('subcategory') && $request->input('subcategory') !== null) {
+            $query->where('subcategory_id', $request->input('subcategory'));
+        }
+    
+        // Filtrar por rango de precios
         if ($request->has('min_price') && $request->has('max_price')) {
             $query->whereBetween('price', [$request->input('min_price'), $request->input('max_price')]);
         }
     
-    
+        // Ordenar resultados
         if ($request->has('sort')) {
             switch ($request->input('sort')) {
                 case 'price_asc':
@@ -58,16 +75,18 @@ class RoutesController extends Controller
                     $query->orderBy('created_at', 'asc');
                     break;
                 default:
-                    // No sorting applied
+                    $query;
                     break;
             }
         } else {
-            $query->latest();
+            $query->latest(); // Ordenar por la fecha más reciente por defecto
         }
     
+        // Paginar los resultados
         $productsList = $query->paginate(16)->appends($request->except('page'));
-        $categoriesList = Categories::latest()->paginate();
+        $categoriesList = Categories::where('status', '0')->get(); // Solo categorías activas
     
+        // Retornar la vista
         return view('store', compact('productsList', 'categoriesList'));
     }
     

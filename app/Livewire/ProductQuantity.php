@@ -67,7 +67,7 @@ class ProductQuantity extends Component
         session()->put('cart', $cart);
     
         // Emitir evento o mensaje para indicar que el producto fue agregado con éxito
-        $this->dispatch('productAdded', $cart[$this->productId]);
+        $this->dispatch('productAdded', count($cart));
         // flash()->flash('success', 'El producto se ha agregado con éxito.');
         // toastr()-> success('El producto se ha agregado con éxito.');
     }

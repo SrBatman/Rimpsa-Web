@@ -18,9 +18,14 @@ class Products extends Model
         'status',
         'stock',
     ];
+    
+    public function subcategory()
+    {
+        return $this->belongsTo(Subcategories::class, 'subcategory_id', 'id');
+    }
 
-
-    public function category(){
-        return $this->belongsTo(Categories::class, 'category_id', 'id');
+    public function category()
+    {
+        return $this->hasOneThrough(Categories::class, Subcategories::class, 'id', 'id', 'subcategory_id', 'category_id');
     }
 }

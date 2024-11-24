@@ -22,6 +22,7 @@ Route::get('/login', [APIcontroller::class, 'login']);
 Route::post('/storages', [StoragesController::class, 'store']);
 
 Route::get('/categories', [App\Http\Controllers\Admin\CategoriesController::class, 'getCategories']);
-Route::get('/brands', [App\Http\Controllers\Admin\BrandsController::class, 'getBrands']);
+Route::middleware(['web'])->get('/brands', [App\Http\Controllers\Admin\BrandsController::class, 'getBrands']);
+Route::get('/subcategories/{category_id}', [App\Http\Controllers\Admin\SubcategoriesController::class, 'getSubcategoriesByCategory']);
 
 // Route::post('/cart', [App\Http\Controllers\CartController::class, 'store']);

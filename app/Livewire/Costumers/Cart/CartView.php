@@ -9,7 +9,7 @@ class CartView extends Component
 
     public $cart = [];
     public $subtotal = 0;
-    public $shipping = 10; // Este es un costo fijo de ejemplo, cámbialo según la lógica de tu aplicación.
+    public $shipping = 230; // Este es un costo fijo de ejemplo, cámbialo según la lógica de tu aplicación.
     public $total = 0;
 
     // Método para cargar el carrito desde la sesión
@@ -40,8 +40,9 @@ class CartView extends Component
         }
         session()->put('cart', $cart);
 
-        // Actualizar la propiedad
+        // Actualizar la propiedad  
         $this->cart = $cart;
+        $this->calculateTotal();
     }
 
     public function decreaseQuantity($productId)
@@ -63,6 +64,12 @@ class CartView extends Component
     
         // Actualizar la propiedad
         $this->cart = $cart;
+        $this->calculateTotal();
+        if (empty($cart)) {
+            $this->dispatch('clearCart', count($cart));
+        } else {
+            $this->dispatch('productRemoveByEntity', count($cart));
+        }
     }
     public function removeFromCart($productId)
     {
@@ -72,6 +79,8 @@ class CartView extends Component
 
         // Actualizar la propiedad
         $this->cart = $cart;
+        $this->calculateTotal();
+        $this->dispatch('productRemove', count($cart));
     }
 
     public function render()
@@ -83,5 +92,6 @@ class CartView extends Component
     {
     session()->forget('cart');  // Vacía el carrito de la sesión
     $this->cart = [];  // Limpiar la propiedad del carrito
+    $this->dispatch('clearCart', count($this->cart));
     }
 }

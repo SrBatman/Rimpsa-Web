@@ -26,12 +26,28 @@
                                 <span class="menu-text" style="color: #fff;">Productos</span>
                             </a>
                         </li>
-
+{{-- 
                         <li>
                             <a href="{{ url('admin/categories') }}" class="{{ Request::is('admin/categories*') ? 'active':'' }}">
                                 <span data-feather="tag" class="nav-icon"></span>
                                 <span class="menu-text" style="color: #fff;">Categorias</span>
                             </a>
+                        </li> --}}
+
+                        <li class="has-child">
+                            <a href="#" class="{{ Request::is('admin/categories*') ? 'active':'' }}">
+                                <span data-feather="tag" class="nav-icon"></span>
+                                <span class="menu-text" style="color: #fff;">Categorias</span>
+                                <span class="toggle-icon"></span>
+                            </a>
+                            <ul>
+                                <li class="l_sidebar">
+                                    <a href="{{ url('admin/categories') }}" class="menu-text" style="color: #fff;">Administrar</a>
+                                </li>
+                                <li class="l_sidebar">
+                                    <a href="{{ url('admin/subcategories') }}" class="menu-text" style="color: #fff;">Subcategorias</a>
+                                </li>
+                            </ul>
                         </li>
 
                         <li>
@@ -76,10 +92,10 @@
                             </a>
                             <ul>
                                 <li class="l_sidebar">
-                                    <a href="{{ url('admin/buys/create') }}">Agregar Compras</a>
+                                    <a href="{{ url('admin/buys/create') }}" class="menu-text" style="color: #fff;">Agregar Compras</a>
                                 </li>
                                 <li class="l_sidebar">
-                                    <a href="{{ url('admin/buys') }}">Ver Compras</a>
+                                    <a href="{{ url('admin/buys') }}" class="menu-text" style="color: #fff;">Ver Compras</a>
                                 </li>
                             </ul>
                         </li>
@@ -92,10 +108,10 @@
                             </a>
                             <ul>
                                 <li class="l_sidebar">
-                                    <a href="{{ url('admin/payments/create') }}">Agregar Metodo de pago</a>
+                                    <a href="{{ url('admin/payments/create') }}" class="menu-text" style="color: #fff;">Agregar Metodo de pago</a>
                                 </li>
                                 <li class="l_sidebar">
-                                    <a href="{{ url('admin/payments') }}">Ver Metodos de pagos</a>
+                                    <a href="{{ url('admin/payments') }}" class="menu-text" style="color: #fff;">Ver Metodos de pagos</a>
                                 </li>
                             </ul>
                         </li>

@@ -15,7 +15,13 @@ class Categories extends Model
     ];
 
 
-    public function products(){
-        return $this->hasMany(Products::class, 'category_id', 'id');
+    public function subcategories()
+    {
+        return $this->hasMany(Subcategories::class, 'category_id');
+    }
+
+    public function products()
+    {
+    return $this->hasManyThrough(Products::class, Subcategories::class, 'category_id', 'subcategory_id', 'id', 'id');
     }
 }

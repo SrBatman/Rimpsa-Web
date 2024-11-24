@@ -45,20 +45,31 @@
                                                 <th style="background: #313338;  color: #fff;"><span class="userDatatable-title" style="color:#fff;">Administrador</span></th>
                                                 <th style="background: #313338;  color: #fff;"><span class="userDatatable-title" style="color:#fff;">Mensaje</span></th>
                                                 <th style="background: #313338;  color: #fff;"><span class="userDatatable-title" style="color:#fff;">Fecha</span></th>
+                                                <th style="background: #313338;  color: #fff;"><span class="userDatatable-title" style="color:#fff;">Detalles</span></th>
                                                 
                                                 <!-- <th style="background: #313338;  color: #fff;"><span class="userDatatable-title" style="color:#fff;">Fecha de pedido </span></th>
                                                 <th style="background: #313338;  color: #fff;"><span class="userDatatable-title" style="color:#fff;">Mensaje de estado</span></th>
                                                 <th style="background: #313338;  color: #fff;"><span class="userDatatable-title float-left" style="color:#fff;">Accion</span></th> -->
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody style="overflow-y: scroll;">
                                             @forelse ($logs as $log)
                                                 <tr>
-                                                    <td><div class="userDatatable-content" style="color:#fff;">{{ $log->id }}</div></td>
-                                                    <td><div class="userDatatable-content" style="color:#fff;">{{ $log->action }}</div></td>
-                                                    <td><div class="userDatatable-content" style="color:#fff;">{{ $log->user }}</div></td>
-                                                    <td><div class="userDatatable-content" style="color:#fff;  text-transform: none;">{{ $log->message }}</div></td>
-                                                    <td><div class="userDatatable-content" style="color:#fff;">{{ $log->created_at->format('d-m-Y') }}</div></td>
+                                                    <td><div class="userDatatable-content" style="color:#fff;">{{ $log['_id'] }}</div></td>
+                                                    <td><div class="userDatatable-content" style="color:#fff;">{{ $log['action'] }}</div></td>
+                                                    <td><div class="userDatatable-content" style="color:#fff;">{{ $log['user'] }}</div></td>
+                                                    <td><div class="userDatatable-content" style="color:#fff;  text-transform: none;">{{ $log['message'] }}</div></td>
+                                                    <td><div class="userDatatable-content" style="color:#fff;">{{ $log['createdAt']->format('d-m-Y') }}</div></td>
+                                                    <td>
+                                                        <ul class="mb-0 d-flex flex-wrap">
+                                                            <li>
+                                                                <a href="#" class="btn btn-primary btn-outline-lighten__height mr-2">Ver</a>
+                                                            </li>
+                                                            <li>
+                                                                {{-- <button type="button" onclick="modalBrandDel('{{ $brand['id'] }}', '{{ $brand['name'] }}')" class="btn btn-danger btn-outline-lighten__height" data-toggle="modal" data-target="#deleteBrandModal">Eliminar</button> --}}
+                                                            </li>
+                                                        </ul>
+                                                    </td>
                                                 
                                                 </tr>
                                             @empty

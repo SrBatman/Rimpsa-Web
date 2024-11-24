@@ -88,7 +88,7 @@
                                                 <tr>
                                                     <td><div class="userDatatable-content" style="color: #fff;">{{ $user->id }}</div></td>
                                                     <td><div class="userDatatable-content" style="color: #fff;">{{ $user->name }}</div></td>
-                                                    <td><div class="userDatatable-content" style="color: #fff;">{{ $user->email }}</div></td>
+                                                    <td><div class="userDatatable-content" style="color: #fff; text-transform: none;">{{ $user->email }}</div></td>
                                                     <td>
                                                         <div class="userDatatable-content d-inline-block">
                                                             @if ($user->role_as  == '0')

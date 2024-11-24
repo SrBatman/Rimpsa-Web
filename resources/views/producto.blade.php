@@ -22,7 +22,7 @@
   </div>
 </section>
 
-<script type="module" src="{{ asset('assets/js/cart.js') }}"></script>
+
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {

@@ -77,7 +77,7 @@
 						<span class="navbar-toggler-icon"></span>
 					</button>
 
-					<div class="collapse navbar-collapse" id="navbarsExample07XL">
+					<div class="navbar-collapse" id="navbarsExample07XL">
 						<div class="cotizaciones-contenedor">
 
 							<h2 class="cotizacion-text">¿COTIZACIONES?</h2>
@@ -146,7 +146,7 @@
 								<span class="navbar-toggler-icon"></span>
 							</button>
 
-							<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+							<div class="navbar-collapse justify-content-md-center" id="navbarsExample08">
 								<ul class="navbar-nav">
 
 									<li class="nav-item" id="index-option-nav">
@@ -390,6 +390,7 @@
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+	
 	<script>
 		const routes = {
 			'/': {
@@ -420,7 +421,7 @@
 		});
 	</script>
 
-
+	<script type="module" src="{{ asset('assets/js/cart.js') }}"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 	<script>
 		const userButton = document.querySelector('.user-dropdown .user-button');

@@ -49,6 +49,16 @@ Route::prefix('admin')->middleware(['auth', AdminMiddleware::class])->group(func
         Route::delete('/categories/{category}', 'destroy');
     });
 
+    Route::controller(App\Http\Controllers\Admin\SubcategoriesController::class)->group(function () {
+        Route::get('/subcategories', 'index');
+
+        Route::post('/subcategories','store');
+        Route::get('/subcategories/edit/{category}', 'edit');
+        Route::put('/subcategories/{category}', 'update');
+
+        Route::delete('/subcategories/{category}', 'destroy');
+    });
+
     //Rutas de marcas
     Route::controller(App\Http\Controllers\Admin\BrandsController::class)->group(function () {
         Route::get('/brands', 'index');
@@ -64,6 +74,7 @@ Route::prefix('admin')->middleware(['auth', AdminMiddleware::class])->group(func
     //Rutas de logs
     Route::controller(App\Http\Controllers\Admin\LogsController::class)->group(function () {
         Route::get('/logs', 'index');
+        Route::get('/logs/details/{log}', 'details');
         Route::post('/logs','store');
     });
 

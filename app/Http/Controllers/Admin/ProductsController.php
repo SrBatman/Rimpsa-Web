@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\Categories;
+use App\Models\Subcategories;
+use App\Models\Brands;
 use App\Http\Requests\ProductFormRequest;
 use Illuminate\Support\Str;
 use App\Models\Logs;
@@ -64,44 +66,52 @@ class ProductsController extends Controller
 
     public function edit(int $product_id)
     {
+        // $categories = Categories::all();
+        // // $brands = Brand::all();
+        // $product = Products::findOrFail($product_id);
+        $product = ProductS::findOrFail($product_id);
         $categories = Categories::all();
-        // $brands = Brand::all();
-        $product = Products::findOrFail($product_id);
-
-        return view('admin.products.edit', compact('categories', 'product'));
+        $subcategories = Subcategories::where('category_id', $product->subcategory->category_id ?? null)->get();
+        $brands = Brands::all();
+        $allSubcategories = Subcategories::all();
+        return view('admin.products.edit', compact('product', 'categories', 'subcategories', 'allSubcategories', 'brands'));
     }
 
     public function update(ProductFormRequest $request, int $product_id)
     {
         $validatedData = $request->validated();
-    
+
+        // Busca el producto a través de la relación
         $product = Categories::findOrFail($validatedData['category_id'])
-            ->products()->where('id', $product_id)->first();
-            
+        ->products()->where('products.id', '=', $product_id)->first();
+    
+        if (!$product) {
+            return redirect('/admin/products')->with('message', 'No se encontró el producto.');
+        }
+    
         $oldProductData = $product->only(['category_id', 'name', 'brand', 'description', 'price', 'stock', 'status', 'image']);
-        $oldName = $oldProductData['name'];    
+        $oldName = $oldProductData['name'];
     
-        if ($product) {
-            $product->update([
-                'category_id' => $validatedData['category_id'],
-                'name' => $validatedData['name'],
-                'brand' => $validatedData['brand'],
-                'description' => $validatedData['description'],
-                'price' => $validatedData['price'],
-                'stock' => $validatedData['stock'],
-                'status' => $request->status == null ? 1 : 0,
-                'slug' => Str::slug($validatedData['name']),
-            ]);
+        // Actualiza los campos del producto
+        $product->update([
+            'category_id' => $validatedData['category_id'],
+            'name' => $validatedData['name'],
+            'brand' => $validatedData['brand'],
+            'description' => $validatedData['description'],
+            'price' => $validatedData['price'],
+            'stock' => $validatedData['stock'],
+            'status' => $request->status == null ? 1 : 0,
+            'slug' => Str::slug($validatedData['name']),
+        ]);
     
-            $file = $request->file('image');
-            if ($file && $file->isValid()) {
-                $uploadPath = 'imgs/products/';
-                $fileName = $file->getClientOriginalName();
-                $extension = $file->getClientOriginalExtension();
-    
-                $request->file('image')->move($uploadPath, $fileName);
-                $product->update(['image' => "http://192.168.100.2:8000/".$uploadPath.$fileName]);
-            }
+        // Actualiza la imagen si se proporciona
+        $file = $request->file('image');
+        if ($file && $file->isValid()) {
+            $uploadPath = 'imgs/products/';
+            $fileName = $file->getClientOriginalName();
+            $request->file('image')->move($uploadPath, $fileName);
+            $product->update(['image' => "http://192.168.100.2:8000/" . $uploadPath . $fileName]);
+        }
     
             $updatedProductData = $product->only(['category_id', 'name', 'brand', 'description', 'price', 'stock', 'status', 'image']);
     
@@ -149,9 +159,6 @@ class ProductsController extends Controller
             }
     
             return redirect('/admin/products')->with('message', 'Producto actualizado con éxito.');
-        } else {
-            return redirect('/admin/products')->with('message', 'No se encontró el producto.');
-        }
     }
 
 

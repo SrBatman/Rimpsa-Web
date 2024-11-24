@@ -137,7 +137,7 @@
                                                 </td>
                                                 <td><div class="userDatatable-content">{{ $orderItem->price }}</div></td>
                                                 <td><div class="userDatatable-content">{{ $orderItem->quantity }}</div></td>
-                                                <td><div class="userDatatable-content">${{ number_format($orderItem->quantity * $orderItem->price), 2 }}</div></td>
+                                                <td><div class="userDatatable-content">${{ number_format($orderItem->quantity * $orderItem->price , 2) }}</div></td>
                                                 @php
                                                     $totalPrice += $orderItem->quantity * $orderItem->price;
                                                 @endphp
@@ -145,7 +145,7 @@
                                         @endforeach
                                         <tr>
                                             <td colspan="5" class="userDatatable-content">Cantidad Total:</td>
-                                            <td colspan="1" class="userDatatable-content">${{ number_format($totalPrice), 2 }}</td>
+                                            <td colspan="1" class="userDatatable-content">${{ number_format($totalPrice, 2) }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
