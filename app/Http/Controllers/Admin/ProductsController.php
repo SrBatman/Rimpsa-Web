@@ -11,9 +11,18 @@ use App\Models\Brands;
 use App\Http\Requests\ProductFormRequest;
 use Illuminate\Support\Str;
 use App\Models\Logs;
+use Illuminate\Support\Facades\Http;
 
 class ProductsController extends Controller
 {
+    protected $apiUrl;
+    protected $token;
+
+    public function __construct()
+    {
+        $this->apiUrl = config('services.api.url'); // Obtiene la URL desde el archivo de configuración
+        $this->token = session('authToken');
+    }
     //
     public function create()
     {
@@ -33,141 +42,107 @@ class ProductsController extends Controller
 
     public function store(ProductFormRequest $request)
     {
-        $validated = $request->validated();
 
-        $Product = new Products();
-        $Product->name = $request->name;
-        $Product->slug = Str::slug($request->name);
-        $Product->category_id = $request->category_id;
-        $Product->brand = $request->brand;
-        $Product->description = $request->description;
-        $Product->price = $request->price;
-        $Product->stock = $request->stock;
-        $Product->status = '0';
+        $data = [
+            'name' => $request->name,
+            'category_id' => $request->category_id,
+            'subcategory_id' => $request->subcategory_id,
+            'admin' => $request->adminName,
+            'brand' => $request->brand,
+            'description' => $request->description,
+            'price' => $request->price,
+            'stock' => $request->stock,
+            'status' => '0',
+            'file' => $request->file('image')
+        ];
 
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
 
-        $file = $request->file('image');
-        if ($file && $file->isValid()) {
-            $uploadPath = 'imgs/products/';
-            $fileName = $file->getClientOriginalName();
-            $extention = $file->getClientOriginalExtension();
-        
-
-            $request->file('image')->move($uploadPath, $fileName);
-            $Product->image = "http://localhost:8000/".$uploadPath.$fileName;
-            $Product->save();
-        
-            Logs::create(['message' => 'Ha agregado el producto '.$Product->name. ' con el ID: '.$Product->id, 'action' => 'Agregó', 'user' => $request->adminName]);
+            $response = Http::withToken($this->token)
+                ->attach('file', file_get_contents($file->getRealPath()), $file->getClientOriginalName())
+                ->asMultipart() // Indica que la solicitud es de tipo multipart/form-data
+                ->post($this->apiUrl . 'products', $data);
+        } else {
+           
+            $response = Http::withToken($this->token)
+                ->post($this->apiUrl . 'products', $data);
+        }
+        // Logs::create(['message' => 'Ha agregado la marca '.$request->name. ' con el ID: '.$Brand->id, 'action' => 'Agregó', 'user' => $adminName]);
+        if ($response->successful()) {
             return redirect('/admin/products')->with('message', 'Producto agregado con éxito.');
         } else {
-            return redirect()->back()->with('error', 'Error al guardar la imagen, intentalo de nuevo.');
+            return redirect()->back()->with('error', 'Hubo un error al agregar el producto.');
+        }
+
+    }
+
+    public function edit(string $product_id)
+    {
+        $response = Http::withToken($this->token)->get($this->apiUrl.'products/getEditInfo/' . $product_id);
+        if ($response->successful()) {
+            $data = $response->json()['data'];
+            $product = $data['product'];
+            $categories = $data['allCategories'];
+            $subcategories = $data['relatedSubcategories'];
+            $allSubcategories = $data['allSubcategories'];
+            $brands = $data['brands'];
+
+
+            return view('admin.products.edit', compact('product', 'categories', 'subcategories', 'allSubcategories', 'brands'));
+        } else {
+            return redirect('admin/products')->with('error', 'Error al cargar datos del producto.');
         }
     }
 
-    public function edit(int $product_id)
+    public function update(ProductFormRequest $request, string $product_id)
     {
-        // $categories = Categories::all();
-        // // $brands = Brand::all();
-        // $product = Products::findOrFail($product_id);
-        $product = ProductS::findOrFail($product_id);
-        $categories = Categories::all();
-        $subcategories = Subcategories::where('category_id', $product->subcategory->category_id ?? null)->get();
-        $brands = Brands::all();
-        $allSubcategories = Subcategories::all();
-        return view('admin.products.edit', compact('product', 'categories', 'subcategories', 'allSubcategories', 'brands'));
-    }
-
-    public function update(ProductFormRequest $request, int $product_id)
-    {
-        $validatedData = $request->validated();
 
         // Busca el producto a través de la relación
-        $product = Categories::findOrFail($validatedData['category_id'])
-        ->products()->where('products.id', '=', $product_id)->first();
-    
-        if (!$product) {
-            return redirect('/admin/products')->with('message', 'No se encontró el producto.');
-        }
-    
-        $oldProductData = $product->only(['category_id', 'name', 'brand', 'description', 'price', 'stock', 'status', 'image']);
-        $oldName = $oldProductData['name'];
-    
-        // Actualiza los campos del producto
-        $product->update([
-            'category_id' => $validatedData['category_id'],
-            'name' => $validatedData['name'],
-            'brand' => $validatedData['brand'],
-            'description' => $validatedData['description'],
-            'price' => $validatedData['price'],
-            'stock' => $validatedData['stock'],
-            'status' => $request->status == null ? 1 : 0,
-            'slug' => Str::slug($validatedData['name']),
-        ]);
-    
-        // Actualiza la imagen si se proporciona
-        $file = $request->file('image');
-        if ($file && $file->isValid()) {
-            $uploadPath = 'imgs/products/';
-            $fileName = $file->getClientOriginalName();
-            $request->file('image')->move($uploadPath, $fileName);
-            $product->update(['image' => "http://192.168.100.2:8000/" . $uploadPath . $fileName]);
-        }
-    
-            $updatedProductData = $product->only(['category_id', 'name', 'brand', 'description', 'price', 'stock', 'status', 'image']);
-    
-            // Mapeo de claves a nombres legibles
-            $fieldNames = [
-                'category_id' => 'Categoría',
-                'name' => 'Nombre',
-                'brand' => 'Marca',
-                'description' => 'Descripción',
-                'price' => 'Precio',
-                'stock' => 'Stock',
-                'status' => 'Estado',
-                'image' => 'Imagen',
+        $response = Http::withToken($this->token)->get($this->apiUrl.'products/' . $product_id);
+        if ($response->successful()) {
+            
+            $data =  [
+                'name' => $request->name,
+                'brand' => $request->brand,
+                'description' => $request->description,
+                'price' => $request->price,
+                'file' => $request->file('image'),
+                'status' => $request->status == null ? 1 : 0,
+                'stock' => $request->stock,
+                'category_id' => $request->category_id,
+                'subcategory_id' => $request->subcategory_id,
             ];
+
+
+            if ($request->hasFile('image')) {
+                $file = $request->file('image');
     
-            // Mapeo de estado a valores legibles
-            $statusNames = [
-                0 => 'Visible',
-                1 => 'Oculto',
-            ];
-    
-            // Verifica cambios y crea logs para cada campo
-            foreach ($updatedProductData as $key => $newValue) {
-                if ($oldProductData[$key] != $newValue) {
-                    $fieldName = $fieldNames[$key] ?? $key; // Obtiene el nombre legible del campo
-                    
-                    // Convierte el estado a un valor legible
-                    if ($key == 'status') {
-                        $oldValue = $statusNames[$oldProductData[$key]] ?? $oldProductData[$key];
-                        $newValue = $statusNames[$newValue] ?? $newValue;
-                    } else {
-                        $oldValue = $oldProductData[$key];
-                    }
-    
-                    $logMessage = "Ha actualizado el producto {$oldName} con el ID: {$product->id}. El campo '{$fieldName}' ha cambiado de '{$oldValue}' a '{$newValue}'";
-                    if ($key == 'stock') {
-                        $logMessage = "Ha actualizado el stock del producto {$oldName} con el ID: {$product->id}. De '{$oldProductData[$key]}' a '{$newValue}'";
-                    }
-                    Logs::create([
-                        'message' => $logMessage,
-                        'action' => 'Actualizó',
-                        'user' => $request->adminName
-                    ]);
-                }
+                $response = Http::withToken($this->token)
+                    ->attach('file', file_get_contents($file->getRealPath()), $file->getClientOriginalName())
+                    ->asMultipart() // Indica que la solicitud es de tipo multipart/form-data
+                    ->put($this->apiUrl . 'products/'.$product_id, $data);
+            } else {
+               
+                $response = Http::withToken($this->token)
+                    ->put($this->apiUrl . 'products/'.$product_id, $data);
             }
-    
-            return redirect('/admin/products')->with('message', 'Producto actualizado con éxito.');
+            if ($response->successful()) return redirect('/admin/products')->with('message', 'Producto actualizado con éxito.');
+            else return redirect('admin/products')->with('error', 'Error al actualizar el producto.');
+        } else {
+            return redirect('admin/products')->with('error', 'Producto no encontrado.');
+        }
+        
+        
     }
 
 
     public function destroy($productId, Request $request)
     {
-        $adminName = $request->input('adminName'); 
+        $adminName = $request->input('adminName');
         $product = Products::findOrFail($productId);
         $product->delete();
-        Logs::create(['message' => 'Ha eliminado el producto '.$product->name. ' con el ID: '.$product->id, 'action' => 'Eliminó', 'user' => $adminName]);
+        Logs::create(['message' => 'Ha eliminado el producto ' . $product->name . ' con el ID: ' . $product->id, 'action' => 'Eliminó', 'user' => $adminName]);
         return response()->json(['success' => true, 'message' => 'Product deleted successfully'], 200);
     }
 

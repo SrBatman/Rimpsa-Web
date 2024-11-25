@@ -28,7 +28,7 @@
                 </div>
                 @endif
 
-                <form action="{{ url('admin/products/'.$product->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('admin/products/'.$product['_id']) }}" method="POST" enctype="multipart/form-data">
                     
                     @method('PUT')
                     @csrf
@@ -42,7 +42,7 @@
 
                             <div class="form-group">
                                 <label for="a10" class="il-gray fs-14 fw-500 align-center" style="color: #fff;">Nombre del Producto</label>
-                                <input type="text" name="name" value="{{ $product->name }}" class="form-control ih-medium ip-light radius-xs b-light px-15" id="a10">
+                                <input type="text" name="name" value="{{ $product['name'] }}" class="form-control ih-medium ip-light radius-xs b-light px-15" id="a10">
                                 @error('name')<small class="text-danger">{{$message}}</small> @enderror
                             </div>
 
@@ -50,8 +50,8 @@
                                 <label for="category_id" class="il-gray fs-14 fw-500 align-center" style="color: #fff;">Categoría</label>
                                 <select class="form-control px-15" name="category_id" id="category_id">
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}" {{ $category->id == $product->category_id ? 'selected' : '' }}>
-                                            {{ $category->name }}
+                                        <option value="{{ $category['id'] }}" {{ $category['id'] == $product['category_id'] ? 'selected' : '' }}>
+                                            {{ $category['name'] }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -62,8 +62,8 @@
                                 <label for="subcategory_id" class="il-gray fs-14 fw-500 align-center" style="color: #fff;">Subcategoría</label>
                                 <select class="form-control px-15" name="subcategory_id" id="subcategory_id">
                                     @foreach ($subcategories as $subcategory)
-                                        <option value="{{ $subcategory->id }}" {{ $subcategory->id == $product->subcategory_id ? 'selected' : '' }}>
-                                            {{ $subcategory->name }}
+                                        <option value="{{ $subcategory['id'] }}" {{ $subcategory['id'] == $product['subcategory_id'] ? 'selected' : '' }}>
+                                            {{ $subcategory['name'] }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -76,7 +76,7 @@
                                 <label for="exampleFormControlSelect1" class="il-gray fs-14 fw-500 align-center" style="color: #fff;">Proveedor</label>
                                 <select class="form-control px-15" name="brand">
                                      @foreach ($brands as $brand)
-                                        <option value="{{ $brand->name }}" {{ $brand->name == $product->brand ? 'selected':'' }}>{{ $brand->name }}</option>
+                                        <option value="{{ $brand['name'] }}" {{ $brand['name']== $product['brand'] ? 'selected':'' }}>{{ $brand['name'] }}</option>
                                     @endforeach 
                                 </select>
                                 {{-- <input type="text" name="brand" value="{{ $product->brand }}" class="form-control ih-medium ip-light radius-xs b-light px-15" id="a10"> --}}
@@ -85,7 +85,7 @@
 
                             <div class="form-group form-element-textarea mb-20">
                                 <label for="exampleFormControlTextarea1" class="il-gray fs-14 fw-500 align-center" style="color: #fff;">Descripcion</label>
-                                <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ $product->description }}</textarea>
+                                <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ $product['description'] }}</textarea>
                                 @error('description')<small class="text-danger">{{$message}}</small> @enderror
                             </div>
                         </div>
@@ -99,7 +99,7 @@
                         <div class="card-body" style="background: #313338;  color: #fff;">
                             <div class="form-group">
                                 <label for="a10" class="il-gray fs-14 fw-500 align-center" style="color: #fff;">Precio</label>
-                                <input type="text" name="price" value="{{ intval($product->price) }}" class="form-control ih-medium ip-light radius-xs b-light px-15" id="a10">
+                                <input type="text" name="price" value="{{ intval($product['price']) }}" class="form-control ih-medium ip-light radius-xs b-light px-15" id="a10">
                                 @error('original_price')<small class="text-danger">{{$message}}</small> @enderror
                             </div>
 
@@ -111,7 +111,7 @@
 
                             <div class="form-group">
                                 <label for="a10" class="il-gray fs-14 fw-500 align-center" style="color: #fff;">Cantidad</label>
-                                <input type="number" name="stock" value="{{ $product->stock }}" class="form-control ih-medium ip-light radius-xs b-light px-15" id="a10">
+                                <input type="number" name="stock" value="{{ $product['stock'] }}" class="form-control ih-medium ip-light radius-xs b-light px-15" id="a10">
                                 @error('quantity')<small class="text-danger">{{$message}}</small> @enderror
                             </div>
 
@@ -119,7 +119,7 @@
                                 <label for="exampleFormControlTextarea1" class="il-gray fs-14 fw-500 align-center" style="color: #fff;">Estatus</label>
                          
                                 <div class="checkbox-theme-default custom-checkbox ">
-                                    <input class="checkbox" type="checkbox" name="status" id="check-un3" {{ $product->status == '1' ? '':'checked' }} />
+                                    <input class="checkbox" type="checkbox" name="status" id="check-un3" {{ $product['status'] == '1' ? '':'checked' }} />
                                     <label for="check-un3">
                                         <span class="checkbox-text">
                                             Disponible
@@ -135,11 +135,11 @@
                             Imagen del producto
                         </div>
                         <div>
-                            @if($product->image)
+                            @if($product['image'])
                             <div class="row">
                   
                                 <div class="ml-5"  style="margin-top: 20px">
-                                    <img src="{{ asset($product->image) }}" style="width: 150px; height: 150px;" class="me-4 border" alt="Img">
+                                    <img src="{{ asset($product['image']) }}" style="width: 150px; height: 150px;" class="me-4 border" alt="Img">
                                 </div>
                            
                             </div>
@@ -174,6 +174,7 @@
         const subcategorySelect = document.getElementById('subcategory_id');
 
         // Filtra las subcategorías relacionadas con la categoría seleccionada.
+        console.log(allSubcategories);
         const filteredSubcategories = allSubcategories.filter(subcategory => subcategory.category_id == categoryId);
 
         // Limpia el menú de subcategorías.

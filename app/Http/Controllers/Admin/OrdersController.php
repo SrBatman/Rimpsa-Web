@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Carbon;
 use App\Models\Orders;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\InvoiceOrderMailable;
 
 class OrdersController extends Controller
 {
@@ -30,7 +33,7 @@ class OrdersController extends Controller
     }
 
     public function show(int $orderId){
-        $order = Order::where('id',$orderId)->first();
+        $order = Orders::where('id',$orderId)->first();
         if($order){
             return view('admin.orders.view', compact('order'));
         } else {
@@ -51,12 +54,12 @@ class OrdersController extends Controller
     }
 
     public function viewInvoice(int $orderId){
-        $order = Order::findOrFail($orderId);
+        $order = Orders::findOrFail($orderId);
         return view('admin.invoice.generate-invoice', compact('order'));
     }
 
     public function generateInvoice(int $orderId){
-        $order = Order::findOrFail($orderId);
+        $order = Orders::findOrFail($orderId);
         $data = ['order' => $order];
 
         $todayDate = Carbon::now()->format('d-m-Y');
@@ -66,7 +69,7 @@ class OrdersController extends Controller
 
     public function sendInvoiceEmail(int $orderId)
     {
-        $order = Order::findOrFail($orderId);
+        $order = Orders::findOrFail($orderId);
         $totalPrice = $this->calculateTotalPrice($order); // Suponiendo que tengas una función para calcular el precio total
 
         try {

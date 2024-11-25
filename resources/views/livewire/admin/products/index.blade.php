@@ -1,5 +1,6 @@
 
 <style>
+    
     ::-webkit-scrollbar {
         width: 12px;
         /* Ancho del scrollbar */
@@ -72,11 +73,11 @@
                     </div>
                     <div class="card-body" style="background: #313338;  color: #fff;">
                         <div class="userDatatable global-shadow border-0 bg-white w-100" style="background: #313338;  color: #fff;">
-                            <div class="table-responsive" style="background: #313338;  color: #fff;">
+                            <div class="table-responsive" style="background: #313338; color: #fff;">
                                 <table class="table mb-0 table-borderless" style="background: #313338; border: none;">
-                                    <thead style="background: #313338;  color: #fff;">
-                                        <tr class="userDatatable-header" style="background: #313338;  color: #fff;">
-                                            <th style="background: #313338;;"><span class="userDatatable-title" style="color: #fff;">ID</span></th>
+                                    <thead style="background: #313338; color: #fff;">
+                                        <tr class="userDatatable-header" style="background: #313338; color: #fff;">
+                                            <th style="background: #313338;"><span class="userDatatable-title" style="color: #fff;">ID</span></th>
                                             <th style="background: #313338;"><span class="userDatatable-title" style="color: #fff;">Imagen</span></th>
                                             <th style="background: #313338;"><span class="userDatatable-title" style="color: #fff; max-width: 400px;">Producto</span></th>
                                             <th style="background: #313338;"><span class="userDatatable-title" style="color: #fff;">Categoria</span></th>
@@ -86,64 +87,60 @@
                                             <th style="background: #313338;"><span class="userDatatable-title float-left" style="color: #fff;">Acción</span></th>
                                         </tr>
                                     </thead>
-                                    <tbody style="border: none;">
-                                        @forelse ($products as $product)
-                                        <tr>
-                                            <td>
-                                                <div class="userDatatable-content" style="color: #bbbbbb;">{{ $product->id }}</div>
-                                            </td>
-                                            <td><img src="{{ $product->image }}" height="100px" width="100px" alt="product-image"></td>
-                                            <td style="color: #bbbbbb; max-width: 400px; justify-content:center;">
-                                                <div class="userDatatable-content" style="color: #bbbbbb; max-width: 300px; height:80px; word-wrap: break-word; white-space: normal;">{{ $product->name }}</div>
-                                            </td>
-                                            <td>
-                                                <div class="userDatatable-content" style="color: #bbbbbb;">
-                                                    @if($product->category)
-                                                    {{ $product->category->name }}
-                                                    @else
-                                                    Sin Categoria
-                                                    @endif
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="userDatatable-content" style="color: #bbbbbb;">{{ $product->price }}</div>
-                                            </td>
-                                            <td>
-                                                <div class="userDatatable-content" style="color: #bbbbbb;">{{ $product->stock }}</div>
-                                            </td>
-
-                                            <td>
-                                                <div class="userDatatable-content d-inline-block">
-                                                    @if ($product->status == '1')
-                                                    <span class="bg-opacity-danger color-danger rounded-pill userDatatable-content-status active" style="color: #fff;">{{ $product->status == '1' ? 'Oculto':'Visible' }}</span>
-                                                    @else
-                                                    <span class="bg-opacity-success color-success rounded-pill userDatatable-content-status active" style="color: #fff;">{{ $product->status == '1' ? 'Oculto':'Visible' }}</span>
-                                                    @endif
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <ul class="mb-0 d-flex flex-wrap">
-                                                    <li>
-                                                        <a href="{{ url('admin/products/edit/'.$product->id) }}" class="btn btn-primary btn-outline-lighten__height mr-2">Editar</a>
-                                                    </li>
-                                                    <li>
-                                                       
-                                                        <button type="button" onclick="modalProductDel('{{ $product->id }}', '{{ $product->name }}')" class="btn btn-danger btn-outline-lighten__height" data-toggle="modal" data-target="#deleteModal">Eliminar</button>
-                                                       
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                        @empty
-                                        <tr>
-                                            <td colspan="7"  style="color: #fff;">No hay productos disponibles</td>
-                                        </tr>
-                                        @endforelse
-                                    </tbody>
+                                    <div style="max-height: 400px; overflow-y: auto; scrollbar-width: thin;">
+                                        <tbody style="border: none;">
+                                            @forelse ($products as $product)
+                                            <tr>
+                                                <td>
+                                                    <div class="userDatatable-content" style="color: #bbbbbb;">{{ $product['_id'] }}</div>
+                                                </td>
+                                                <td><img src="{{ $product['image'] }}" height="100px" width="100px" alt="product-image"></td>
+                                                <td style="color: #bbbbbb; max-width: 400px; justify-content:center;">
+                                                    <div class="userDatatable-content" style="color: #bbbbbb; max-width: 300px; height:80px; word-wrap: break-word; white-space: normal;">{{ $product['name'] }}</div>
+                                                </td>
+                                                <td>
+                                                    <div class="userDatatable-content" style="color: #bbbbbb;">
+                                                        @if($product['category_id'])
+                                                        {{ $product['categoryName'] }}
+                                                        @else
+                                                        Sin Categoria
+                                                        @endif
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="userDatatable-content" style="color: #bbbbbb;">{{ $product['price'] }}</div>
+                                                </td>
+                                                <td>
+                                                    <div class="userDatatable-content" style="color: #bbbbbb;">{{ $product['stock'] }}</div>
+                                                </td>
+                                                <td>
+                                                    <div class="userDatatable-content d-inline-block">
+                                                        @if ($product['status'] == '1')
+                                                        <span class="bg-opacity-danger color-danger rounded-pill userDatatable-content-status active" style="color: #fff;">{{ $product['status'] == '1' ? 'Oculto':'Visible' }}</span>
+                                                        @else
+                                                        <span class="bg-opacity-success color-success rounded-pill userDatatable-content-status active" style="color: #fff;">{{ $product['status'] == '1' ? 'Oculto':'Visible' }}</span>
+                                                        @endif
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <ul class="mb-0 d-flex flex-wrap">
+                                                        <li>
+                                                            <a href="{{ url('admin/products/edit/'.$product['_id']) }}" class="btn btn-primary btn-outline-lighten__height mr-2">Editar</a>
+                                                        </li>
+                                                        <li>
+                                                            <button type="button" onclick="modalProductDel('{{ $product['_id'] }}', '{{ $product['_id'] }}')" class="btn btn-danger btn-outline-lighten__height" data-toggle="modal" data-target="#deleteModal">Eliminar</button>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            @empty
+                                            <tr>
+                                                <td colspan="7" style="color: #fff;">No hay productos disponibles</td>
+                                            </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </div>
                                 </table>
-                                <div class="mt-3 float-right">
-                                    {{-- {{ $products->links() }} --}}
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -29,7 +29,7 @@ class Index extends Component
         $token = session('authToken');
        
         $response = Http::withToken($token)->get($this->apiUrl.'products');
-       
+        
         if ($response->successful()) {
             $data = $response->json()['data'];
             

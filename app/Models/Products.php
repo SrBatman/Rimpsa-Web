@@ -13,6 +13,8 @@ class Products extends Model
         'slug',
         'brand',
         'description',
+        'subcategory_id',
+        'category_id',
         'price',
         'image',
         'status',
