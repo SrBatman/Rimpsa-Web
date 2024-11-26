@@ -65,23 +65,23 @@
                                         <tbody>
                                             @forelse ($orders as $item)
                                                 <tr>
-                                                    <td><div class="userDatatable-content">{{ $item->id }}</div></td>
-                                                    <td><div class="userDatatable-content">{{ $item->tracking_no }}</div></td>
-                                                    <td><div class="userDatatable-content">{{ $item->fullname }}</div></td>
-                                                    <td><div class="userDatatable-content">{{ $item->payment_mode }}</div></td>
-                                                    <td><div class="userDatatable-content">{{ $item->created_at->format('d-m-Y') }}</div></td>
+                                                    <td style="color: #fff;"><div class="userDatatable-content" style="color: #fff;">{{ $item->id }}</div></td>
+                                                    <td><div class="userDatatable-content" style="color: #fff;">{{ $item->tracking_no }}</div></td>
+                                                    <td><div class="userDatatable-content" style="color: #fff;">{{ $item->fullname }}</div></td>
+                                                    <td><div class="userDatatable-content" style="color: #fff;">{{ $item->payment_mode }}</div></td>
+                                                    <td><div class="userDatatable-content" style="color: #fff;">{{ $item->created_at->format('d-m-Y') }}</div></td>
                                                     <td>
-                                                        <div class="userDatatable-content d-inline-block">
+                                                        <div class="userDatatable-content d-inline-block" >
                                                             @if ($item->status_message == 'Pending')
-                                                                <span class="bg-opacity-warning  color-warning rounded-pill userDatatable-content-status active">{{ $item->status_message }}</span>
+                                                                <span style="color: #fff;"class="bg-opacity-warning  color-warning rounded-pill userDatatable-content-status active">{{ $item->status_message }}</span>
                                                             @elseif ($item->status_message == 'In Progress')
-                                                                <span class="bg-opacity-warning  color-warning rounded-pill userDatatable-content-status active">{{ $item->status_message }}</span>
+                                                                <span style="color: #fff;"class="bg-opacity-warning  color-warning rounded-pill userDatatable-content-status active">{{ $item->status_message }}</span>
                                                             @elseif ($item->status_message == 'Out for Delivery')
-                                                                <span class="bg-opacity-primary  color-primary rounded-pill userDatatable-content-status active">{{ $item->status_message }}</span>
+                                                                <span style="color: #fff;"class="bg-opacity-primary  color-primary rounded-pill userDatatable-content-status active">{{ $item->status_message }}</span>
                                                             @elseif ($item->status_message == 'Completed')
-                                                                <span class="bg-opacity-success  color-success rounded-pill userDatatable-content-status active">{{ $item->status_message }}</span>
+                                                                <span style="color: #fff;"class="bg-opacity-success  color-success rounded-pill userDatatable-content-status active">{{ $item->status_message }}</span>
                                                             @elseif ($item->status_message == 'Cancelled')
-                                                                <span class="bg-opacity-danger  color-danger rounded-pill userDatatable-content-status active">{{ $item->status_message }}</span>
+                                                                <span style="color: #fff;"class="bg-opacity-danger  color-danger rounded-pill userDatatable-content-status active">{{ $item->status_message }}</span>
                                                             @endif
                                                         </div>
                                                     </td>

@@ -106,7 +106,7 @@ class CheckoutView extends Component
             'phone' => $this->phone,
             'pincode' => $this->pincode,
             'address' => $this->address,
-            'status_message' => 'En progreso.',
+            'status_message' => 'In Progress',
             'payment_mode' => $this->payment_mode,
             'payment_id' => $this->payment_id,
         ]);

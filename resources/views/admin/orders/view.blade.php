@@ -4,15 +4,15 @@
 
 @section('content')
 
-<div class="contents">
-    <div class="container-fluid">
-        <div class="row ">
-            <div class="col-lg-12">
+<div class="contents"style="background: #313338;  color: #fff;">
+    <div class="container-fluid"style="background: #313338;  color: #fff;">
+        <div class="row "style="background: #313338;  color: #fff;">
+            <div class="col-lg-12"style="background: #313338;  color: #fff;" >
 
-                <div class="breadcrumb-main">
-                    <h4 class="text-capitalize breadcrumb-title">Detalles de mi pedido</h4>
+                <div class="breadcrumb-main"style="background: #313338;  color: #fff;">
+                    <h4 class="text-capitalize breadcrumb-title"style="background: #313338;  color: #fff;">Detalles de mi pedido</h4>
 
-                    <div class="breadcrumb-action justify-content-center flex-wrap">
+                    <div class="breadcrumb-action justify-content-center flex-wrap"style="background: #313338;  color: #fff;">
 
                         <div class="action-btn">
                             {{-- <a href="{{ url('admin/orders') }}" class="btn btn-danger btn-sm float-end mx-1">Back</a> --}}
@@ -59,30 +59,30 @@
                     <div class="alert alert-success mb-3">{{ session('message') }}</div>
                 @endif
 
-                <div class="card">
-                    <div class="card-header color-dark fw-500">
+                <div class="card"style="background: #313338;  color: #fff;">
+                    <div class="card-header color-dark fw-500"style="background: #313338;  color: #fff;">
                         Detalles de mi pedido
                     </div>
                     <div class="card-body">
 
                         <div class="row">
                             <div class="col-md-6">
-                                <h5>Detalles de mi pedido</h5>
-                                <h6>Id de pedido: {{ $order->id }}</h6>
-                                <h6>Id de seguimiento.: {{ $order->tracking_no }}</h6>
-                                <h6>Fecha de la orden: {{ $order->created_at->format('d-m-Y h:i A') }}</h6>
-                                <h6>Metodo de pago: {{ $order->payment_mode }}</h6>
-                                <h6 class="border p-2 text-success mt-3">
+                                <h5 style="color: #fff;">Detalles de mi pedido</h5>
+                                <h6 style="color: #fff;">Id de pedido: {{ $order->id }}</h6>
+                                <h6 style="color: #fff;">Id de seguimiento.: {{ $order->tracking_no }}</h6>
+                                <h6 style="color: #fff;">Fecha de la orden: {{ $order->created_at->format('d-m-Y h:i A') }}</h6>
+                                <h6 style="color: #fff;">Metodo de pago: {{ $order->payment_mode }}</h6>
+                                <h6 class="border p-2 text-success mt-3" style="color: #fff;">
                                     Mensaje del estatus: <span class="text-uppercase">{{ $order->status_message }}</span>
                                 </h6>
                             </div>
                             <div class="col-md-6">
-                                <h5>Detalles del ususario</h5>
-                                <h6>Nombre Completo {{ $order->fullname }}</h6>
-                                <h6>Email Id: {{ $order->email }}</h6>
-                                <h6>Telefono: {{ $order->phone }}</h6>
-                                <h6>Direccion: {{ $order->address }}</h6>
-                                <h6>Codigo postal: {{ $order->pincode }}</h6>
+                                <h5 style="color: #fff;">Detalles del ususario</h5>
+                                <h6 style="color: #fff;">Nombre Completo {{ $order->fullname }}</h6>
+                                <h6 style="color: #fff;">Email Id: {{ $order->email }}</h6>
+                                <h6 style="color: #fff;">Telefono: {{ $order->phone }}</h6>
+                                <h6 style="color: #fff;">Direccion: {{ $order->address }}</h6>
+                                <h6 style="color: #fff;">Codigo postal: {{ $order->pincode }}</h6>
                             </div>
                         </div>
 
@@ -91,23 +91,23 @@
 
             </div>
 
-            <div class="col-lg-12 mb-30">
-                <div class="card">
-                    <div class="card-header color-dark fw-500">
+            <div class="col-lg-12 mb-30"style="background: #313338;  color: #fff;">
+                <div class="card"style="background: #313338;  color: #fff;">
+                    <div class="card-header color-dark fw-500"style="background: #313338;  color: #fff;">
                         Ordenar productos
                     </div>
-                    <div class="card-body">
+                    <div class="card-body"style="background: #313338;  color: #fff;">
                         <div class="userDatatable global-shadow border-0 bg-white w-100">
                             <div class="table-responsive">
-                                <table class="table mb-0 table-borderless">
+                                <table class="table mb-0 table-borderless" style="background: #313338;  color: #fff;">
                                     <thead>
-                                        <tr class="userDatatable-header">
-                                            <th><span class="userDatatable-title">ID de producto</span></th>
-                                            <th><span class="userDatatable-title">Imagen</span></th>
-                                            <th><span class="userDatatable-title">Producto</span></th>
-                                            <th><span class="userDatatable-title">Precio</span></th>
-                                            <th><span class="userDatatable-title">Cantidad</span></th>
-                                            <th><span class="userDatatable-title">Total</span></th>
+                                        <tr class="userDatatable-header"style="background: #313338;  color: #fff;">
+                                            <th style="background: #313338;  color: #fff;"><span class="userDatatable-title" style="color: #fff;">ID de producto</span></th>
+                                            <th style="background: #313338;  color: #fff;"><span class="userDatatable-title" style="color: #fff;">Imagen</span></th>
+                                            <th style="background: #313338;  color: #fff;"><span class="userDatatable-title" style="color: #fff;">Producto</span></th>
+                                            <th style="background: #313338;  color: #fff;"><span class="userDatatable-title" style="color: #fff;">Precio</span></th>
+                                            <th style="background: #313338;  color: #fff;"><span class="userDatatable-title" style="color: #fff;">Cantidad</span></th>
+                                            <th style="background: #313338;  color: #fff;"><span class="userDatatable-title" style="color: #fff;">Total</span></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -116,7 +116,7 @@
                                         @endphp
                                         @foreach ($order->orderItems as $orderItem)
                                             <tr>
-                                                <td><div class="userDatatable-content">{{ $orderItem->id }}</div></td>
+                                                <td><div class="userDatatable-content" style="background: #313338;  color: #fff;">{{ $orderItem->id }}</div></td>
                                                 <td>
                                                     @if ($orderItem->product->productImages)
                                                         <img src="{{ asset($orderItem->product->productImages[0]->image) }}"
@@ -144,8 +144,8 @@
                                             </tr>
                                         @endforeach
                                         <tr>
-                                            <td colspan="5" class="userDatatable-content">Cantidad Total:</td>
-                                            <td colspan="1" class="userDatatable-content">${{ number_format($totalPrice, 2) }}</td>
+                                            <td colspan="5" class="userDatatable-content"style="color: #fff;">Cantidad Total:</td>
+                                            <td colspan="1" class="userDatatable-content"style="color: #fff;">${{ number_format($totalPrice, 2) }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -156,9 +156,9 @@
 
             </div>
 
-            <div class="col-lg-12 mb-30">
-                <div class="card">
-                    <div class="card-header color-dark fw-500">
+            <div class="col-lg-12 mb-30"style="background: #313338;  color: #fff;">
+                <div class="card"style="background: #313338;  color: #fff;">
+                    <div class="card-header color-dark fw-500"style="background: #313338;  color: #fff;">
                         Proceso de pedido (actualizaciones del estado del pedido)
                     </div>
                     <div class="card-body">
