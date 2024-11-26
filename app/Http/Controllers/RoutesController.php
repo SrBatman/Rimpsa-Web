@@ -26,6 +26,19 @@ class RoutesController extends Controller
     }
 
     public function index(){
+        $data = [
+            'username' => env('API_USER'),
+            'password' => env('API_PASS'),
+        ];
+        $response = Http::post($this->apiUrl . 'login', $data);
+    
+        if ($response->successful()) {
+            // Obtener el token JWT de la respuesta
+            $token = $response->json()['token'];
+    
+            // Almacenar el token en la sesión o en el almacenamiento local
+            session(['authToken' => $token]);
+        }
         return view('index');
     }
 
