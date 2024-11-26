@@ -9,7 +9,7 @@ class CartView extends Component
 
     public $cart = [];
     public $subtotal = 0;
-    public $shipping = 230; // Este es un costo fijo de ejemplo, cámbialo según la lógica de tu aplicación.
+    public $shipping = 2; // Este es un costo fijo de ejemplo, cámbialo según la lógica de tu aplicación.
     public $total = 0;
 
     // Método para cargar el carrito desde la sesión

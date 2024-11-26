@@ -22,7 +22,7 @@ class CheckoutView extends Component
     ];
     public $cart = [];
     public $subtotal = 0;
-    public $shipping = 230; // Este es un costo fijo de ejemplo, cámbialo según la lógica de tu aplicación.
+    public $shipping = 2; // Este es un costo fijo de ejemplo, cámbialo según la lógica de tu aplicación.
     public $total = 0;
 
     // Método para cargar el carrito desde la sesión
@@ -56,6 +56,7 @@ class CheckoutView extends Component
     public function paidOnlineOrder($value){
         $this->payment_id = $value;
         $this->payment_mode = 'Pagado con Paypal';
+        
 
         $onlineOrder = $this->placeOrder();
         if ($onlineOrder){
@@ -69,18 +70,20 @@ class CheckoutView extends Component
                 //Mail Sent Successfully
             }catch(\Exception $e){
                 //Something Went Wrong
+
+                dd($e->getMessage());
             }
 
-            session()->flash('message', 'Order Placed Successfully');
-            $this->dispatchBrowserEvent('message', [
-                'text' => 'Order Placed Successfully',
+            session()->flash('message', 'Pedido realizado con éxito');
+            $this->dispatch('message', [
+                'text' => 'Pago realizado con éxito',
                 'type' => 'success',
                 'status' => 200
             ]);
             return redirect()->to('thank-you');
         } else {
-            $this->dispatchBrowserEvent('message', [
-                'text' => 'Something Went Wrong',
+            $this->dispatch('message', [
+                'text' => 'Algo salió mal',
                 'type' => 'error',
                 'status' => 500
             ]);
@@ -103,7 +106,7 @@ class CheckoutView extends Component
             'phone' => $this->phone,
             'pincode' => $this->pincode,
             'address' => $this->address,
-            'status_message' => 'In Progress',
+            'status_message' => 'En progreso.',
             'payment_mode' => $this->payment_mode,
             'payment_id' => $this->payment_id,
         ]);
@@ -130,7 +133,6 @@ class CheckoutView extends Component
         $this->payment_mode = 'Cash on Delivery';
         $codOrder = $this->placeOrder();
         if ($codOrder){
-            Carts::where('user_id', auth()->user()->id)->delete();
 
             try{
                 $order = Orders::findOrFail($codOrder->id);
@@ -138,6 +140,7 @@ class CheckoutView extends Component
                 //Mail Sent Successfully
             }catch(\Exception $e){
                 //Something Went Wrong
+                dd($e->getMessage());
             }
 
             session()->flash('message', 'Order Placed Successfully');

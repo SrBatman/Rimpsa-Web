@@ -9,13 +9,14 @@
             </div>
             <div class="store-categories-uwu">
                 <ul>
+
                     @foreach($categoriesList as $category)
                     <li class="category-name">
-                        <a href="{{ route('tienda', ['category' => $category->id] + request()->except('page')) }}">{{ $category->name }}</a>
-                        @if($category->name !== 'Sin categorizar')
+                        <a href="{{ route('tienda', ['category' => $category['id']] + request()->except('page')) }}">{{ $category['name'] }}</a>
+                        @if($category['name'] !== 'Sin categorizar')
                         <ul>
-                            @foreach ($category->subcategories as $subcategorie)
-                            <li class="subcategory-name">{{ $subcategorie->name }}</li>
+                            @foreach ($category['subcategories'] as $subcategorie)
+                            <li class="subcategory-name">{{ $subcategorie['name'] }}</li>
                             @endforeach
 
                         </ul>
@@ -57,21 +58,22 @@
             <div id="search-results" class="search-results"></div> <!-- Aquí es donde se mostrarán los resultados de búsqueda -->
         </div>
         <div class="contenedor-de-productos">
-            @if($productsList->isEmpty())
+          
+            @if(count($productsList) === 0)
             <h2>No se encontraron resultados.</h2>
             @else
             <div class="product-container">
                 @foreach($productsList as $product)
                 <div class="product-item">
                     <div class="product-card">
-                        <a href="{{ route('producto', $product->slug) }}">
-                            <img src="{{ $product->image }}" class="product-card-img-top" alt="{{ $product->name }}" height="198px" width="198px">
+                        <a href="{{ route('producto', $product['slug']) }}">
+                            <img src="{{ $product['image'] }}" class="product-card-img-top" alt="{{ $product['name'] }}" height="198px" width="198px">
                         </a>
                         <div class="product-card-body">
 
-                            <a class="product-name-in-store" href="{{ route('producto', $product->slug) }}"> {{ $product->name }}</a>
+                            <a class="product-name-in-store" href="{{ route('producto', $product['slug']) }}"> {{ $product['name'] }}</a>
 
-                            <p class="product-card-text"><strong>${{ number_format($product->price, 2) }}</strong></p>
+                            <p class="product-card-text"><strong>${{ number_format($product['price'], 2) }}</strong></p>
                         </div>
                     </div>
                 </div>
@@ -82,7 +84,7 @@
         </div>
         <div class="pagination-container">
         <div class="d-flex justify-content-center pagination">
-            {{ $productsList->links() }}
+           
             </div>
         </div>
         

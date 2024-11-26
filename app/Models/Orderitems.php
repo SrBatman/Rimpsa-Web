@@ -10,11 +10,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Orderitems extends Model
 {
     use HasFactory;
-    
+    protected $table = 'order_items';
+
     protected $fillable = [
         'order_id',
         'product_id',
-        'product_color_id',
         'quantity',
         'price',
     ];

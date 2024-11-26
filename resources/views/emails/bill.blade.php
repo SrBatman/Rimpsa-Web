@@ -105,7 +105,7 @@
                         <td width="10%">{{ $orderItem->price }}</td>
                         <td width="10%">{{ $orderItem->quantity }}</td>
                         <td width="15%" class="fw-bold">
-                            ${{ number_format($orderItem->quantity * $orderItem->price), 2 }}</td>
+                            ${{ number_format(($orderItem->quantity * $orderItem->price), 2) }}</td>
                         @php
                             $totalPrice += $orderItem->quantity * $orderItem->price;
                         @endphp
@@ -113,7 +113,7 @@
                 @endforeach
                 <tr>
                     <td colspan="4" class="total-heading">Monto total - <small>Inc. all vat/tax</small> :</td>
-                    <td colspan="1" class="total-heading">${{ number_format($totalPrice), 2 }}</td>
+                    <td colspan="1" class="total-heading">${{ number_format($totalPrice, 2 )}}</td>
                 </tr>
         </tbody>
     </table>

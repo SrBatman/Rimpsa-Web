@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="bottom-producto">
-        <button type="button" wire:click="addToCart" class="btn btn1">
+        <button type="button" wire:click="addToCart" class="btn btn1"  @disabled($this->productStock === 0)>
             <i class="bi bi-cart"></i> Añadir al carrito
         </button>
     </div>

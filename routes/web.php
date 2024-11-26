@@ -17,7 +17,7 @@ Route::controller(RoutesController::class)-> group(function(){
     Route::get('producto/{slug}', 'producto')-> name('producto');
     Route::get('carrito', 'carrito')-> name('carrito');
     Route::get('/search-products', 'searchProducts')->name('search.products');
-    
+    Route::get('thank-you', 'thankyou')->name('thank-you');
 });
 
 Route::prefix('admin')->middleware(['auth', AdminMiddleware::class])->group(function () {
@@ -51,7 +51,6 @@ Route::prefix('admin')->middleware(['auth', AdminMiddleware::class])->group(func
 
     Route::controller(App\Http\Controllers\Admin\SubcategoriesController::class)->group(function () {
         Route::get('/subcategories', 'index');
-
         Route::post('/subcategories','store');
         Route::get('/subcategories/edit/{category}', 'edit');
         Route::put('/subcategories/{category}', 'update');

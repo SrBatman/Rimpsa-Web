@@ -140,10 +140,14 @@ class ProductsController extends Controller
     public function destroy($productId, Request $request)
     {
         $adminName = $request->input('adminName');
-        $product = Products::findOrFail($productId);
-        $product->delete();
-        Logs::create(['message' => 'Ha eliminado el producto ' . $product->name . ' con el ID: ' . $product->id, 'action' => 'Eliminó', 'user' => $adminName]);
-        return response()->json(['success' => true, 'message' => 'Product deleted successfully'], 200);
+        $response = Http::withToken($this->token)->delete($this->apiUrl.'products/' . $productId, ['adminName'=> $adminName]);
+        if ($response->successful()){
+            return response()->json(['success' => true, 'message' => 'Product deleted successfully'], 200);
+        } else {
+            return response()->json(['success' => false, 'message' => 'Error al eliminar el producto'], 500);
+        }
+        // Logs::create(['message' => 'Ha eliminado el producto ' . $product->name . ' con el ID: ' . $product->id, 'action' => 'Eliminó', 'user' => $adminName]);
+        
     }
 
 }

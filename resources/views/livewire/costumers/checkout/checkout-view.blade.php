@@ -138,9 +138,15 @@
             return actions.order.capture().then(function(orderData) {
                 console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
                 const transaction = orderData.purchase_units[0].payments.captures[0];
+                console.log(transaction.status)
 
                 if (transaction.status == "COMPLETED") {
-                    Livewire.dispatch('transactionEmit', transaction.id);
+                    console.log(transaction.id)
+                    console.log(transaction)
+                    Livewire.dispatch('transactionEmit', { 
+                        value: transaction.id,
+                    });
+                    
                 }
             });
         }
